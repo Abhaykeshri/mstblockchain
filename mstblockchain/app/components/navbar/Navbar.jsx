@@ -350,18 +350,59 @@ export default function Navbar() {
               ))}
             </ul>
 
-            <div className="hidden lg:block relative group">
-              <div className="absolute inset-0 rounded-full bg-[#ff2d2d] opacity-20 blur-md transition-opacity duration-300 group-hover:opacity-40" />
-              <Link
-                href="#"
-                className="relative inline-flex items-center space-x-2 rounded-full bg-[#ff2d2d] px-7 py-2.5 text-[11px] font-extrabold uppercase tracking-[0.15em] text-white transition-all ease-out hover:shadow-[0_4px_14px_0_rgba(255,45,45,0.3)] hover:scale-[1.02] active:scale-95"
-              >
-                <span>explore ecosystem</span>
-                <svg className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
-            </div>
+            <div className="flex items-center gap-3 mt-4">
+  
+  {/* Explore Button */}
+  <div className="hidden lg:block relative group">
+    <div className="absolute inset-0 rounded-full bg-[#ff2d2d] opacity-20 blur-md transition-opacity duration-300 group-hover:opacity-50" />
+    
+    <Link
+      href="#"
+      className="relative inline-flex items-center space-x-2 rounded-full 
+      bg-gradient-to-r from-[#ff2d2d] to-[#ff4d4d] mb-2
+      px-6 py-2.5 text-[11px] font-extrabold uppercase tracking-[0.15em] text-white
+      transition-all duration-300 ease-out
+      hover:shadow-[0_6px_20px_rgba(255,45,45,0.4)]
+      hover:scale-[1.05] active:scale-95"
+    >
+      <span>explore ecosystem</span>
+      <svg
+        className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    </Link>
+  </div>
+
+  {/* Get Started Button */}
+  <div className="hidden lg:block relative group">
+    <div className="absolute inset-0 rounded-full bg-white opacity-10 blur-md transition-opacity duration-300 group-hover:opacity-30" />
+    
+    <Link
+      href="#"
+      className="relative inline-flex items-center space-x-2 rounded-full mb-2
+      bg-white px-6 py-2.5 text-[11px] font-extrabold uppercase tracking-[0.15em] text-black
+      transition-all duration-300 ease-out
+      hover:shadow-[0_6px_20px_rgba(255,255,255,0.2)]
+      hover:scale-[1.05] active:scale-95"
+    >
+      <span>get started</span>
+      <svg
+        className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    </Link>
+  </div>
+
+</div>
+            
 
             <button
               type="button"
@@ -558,9 +599,18 @@ export default function Navbar() {
               <Link
                 href="#"
                 onClick={() => setIsOpen(false)}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#2DD4BF] px-5 py-3.5 text-xs font-bold uppercase tracking-[0.15em] text-black shadow-[0_4px_14px_0_rgba(45,212,191,0.2)] transition-all hover:bg-teal-300 active:scale-95"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-red-500 px-5 py-3.5 text-xs font-bold uppercase tracking-[0.15em] text-black shadow-[0_4px_14px_0_rgba(45,212,191,0.2)] transition-all hover:bg-teal-300 active:scale-95"
               >
                 <span>explore ecosystem</span>
+              </Link>
+            </div>
+            <div className="mt-4 px-2">
+              <Link
+                href="#"
+                onClick={() => setIsOpen(false)}
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3.5 text-xs font-bold uppercase tracking-[0.15em] text-black shadow-[0_4px_14px_0_rgba(45,212,191,0.2)] transition-all hover:bg-teal-300 active:scale-95"
+              >
+                <span>get started</span>
               </Link>
             </div>
           </motion.div>

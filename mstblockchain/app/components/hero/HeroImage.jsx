@@ -6,19 +6,19 @@ import { useEffect, useState } from 'react';
 
 const slides = [
   {
-    src: '/assets/hero/img1.webp',
+    src: '/img1.webp',
     alt: 'Institutional Web3 data visualization',
     width: 1200,
     height: 900
   },
   {
-    src: '/assets/hero/img3.jpeg',
+    src: '/img3.jpeg',
     alt: 'Web3 data visualization',
     width: 1200,
     height: 900
   },
   {
-    src: '/assets/hero/img2.jpg',
+    src: '/img2.jpg',
     alt: 'Decentralized infrastructure abstract network',
     width: 1200,
     height: 900
@@ -27,9 +27,11 @@ const slides = [
 
 export default function HeroImage() {
   const [slideCount, setSlideCount] = useState(0);
+  const [mounted, setMounted] = useState(false);
   const activeIndex = slideCount % slides.length;
 
   useEffect(() => {
+    setMounted(true);
     const intervalId = setInterval(() => {
       setSlideCount((prev) => prev + 1);
     }, 6000);
