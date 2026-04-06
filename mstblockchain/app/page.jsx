@@ -1,6 +1,7 @@
 import HeroSection from './components/hero/HeroSection';
 import WhatIsMST from './components/mst-info/WhatIsMST';
 import Navbar from './components/navbar/Navbar';
+import UseCases from './components/UseCases/UseCase';
 
 export default function HomePage() {
   return (
@@ -8,6 +9,7 @@ export default function HomePage() {
       <Navbar/>
       <HeroSection />
       <WhatIsMST />
+      <UseCases/>
     </main>
   );
 }
