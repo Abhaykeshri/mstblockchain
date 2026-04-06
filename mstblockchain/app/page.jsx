@@ -1,4 +1,5 @@
 import HeroSection from './components/hero/HeroSection';
+import WhatIsMST from './components/mst-info/WhatIsMST';
 import Navbar from './components/navbar/Navbar';
 
 export default function HomePage() {
@@ -6,6 +7,7 @@ export default function HomePage() {
     <main className="min-h-screen bg-white text-black relative">
       <Navbar/>
       <HeroSection />
+      <WhatIsMST />
     </main>
   );
-}Navbar
+}

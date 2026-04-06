@@ -7,9 +7,9 @@ import HeroImage from './HeroImage';
 
 // --- DATA ---
 const slides = [
-  { src: '/assets/hero/img1.webp', alt: 'Institutional Web3' },
-  { src: '/assets/hero/img3.jpeg', alt: 'Data Visualization' },
-  { src: '/assets/hero/img2.jpg', alt: 'Decentralized Network' }
+  { src: '/img1.webp', alt: 'Institutional Web3' },
+  { src: '/img3.jpeg', alt: 'Data Visualization' },
+  { src: '/img2.jpg', alt: 'Decentralized Network' }
 ];
 
 const stats = [
@@ -51,8 +51,10 @@ function CountUp({ value, prefix = '', suffix = '', decimals = 0 }) {
 // --- MAIN COMPONENT ---
 export default function HeroSection() {
   const [slideCount, setSlideCount] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const interval = setInterval(() => {
       setSlideCount((prev) => prev + 1);
     }, 6000);
@@ -60,7 +62,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <main className="relative min-h-screen w-full bg-[#FAFAFA] overflow-hidden font-[var(--font-inter)]">
+    <section className="relative min-h-screen w-full bg-[#FAFAFA] overflow-hidden font-[var(--font-inter)]">
 
       {/* BACKGROUND */}
       
@@ -167,6 +169,6 @@ export default function HeroSection() {
           to { background-position: 200% center; }
         }
       `}</style>
-    </main>
+    </section>
   );
 }
