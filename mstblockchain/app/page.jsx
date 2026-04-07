@@ -5,9 +5,9 @@ import ExplorerSection from './components/Explorer/Explorersection';
 import HeroSection from './components/hero/HeroSection';
 import WhatIsMST from './components/mst-info/WhatIsMST';
 import MSTInstitutional from './components/MSTInstitutional/MSTInstitutional';
-import Navbar from './components/navbar/Navbar';
-// <<<<<<< HEAD
 
+// <<<<<<< HEAD
+import ProductShowcase from './components/productSection/ProductShowcase';
 // import ProductMobileCanvas from './components/productSection/ProductShowcase';
 // =======
 import UseCases from './components/UseCases/UseCase';
@@ -17,12 +17,12 @@ import StructuralPurity from './components/Whitepaper/StructuralPurity';
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-white text-black relative">
-      <Navbar/>
+      
       <HeroSection />
 {/* <<<<<<< HEAD */}
 {/* ======= */}
       <WhatIsMST />
-      
+      <ProductShowcase/>
       <UseCases/>
       <ExplorerSection/>
       <EcosystemSection/>
