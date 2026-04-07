@@ -49,7 +49,7 @@ const buildResources = [
   {
     title: 'SUPPORT & PROGRAMS',
     items: [
-      { label: 'Grant Program', href: '#' },
+      { label: 'Grant Program', href: '/grant' },
       { label: 'Developer Support Forum', href: '#' },
       { label: 'Personalized Dev Support', href: '#' }
     ]
@@ -363,13 +363,13 @@ export default function Navbar() {
 
   return (
     <motion.header
-      ref={navbarRef}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-4 left-0 right-0 z-50 mx-auto w-full max-w-[90rem] px-4 sm:px-5 lg:px-6"
     >
       <div
+        ref={navbarRef}
         className="relative rounded-2xl border border-white/10 bg-[#0b0b0b] p-[1px] shadow-[0_8px_26px_rgba(0,0,0,0.28)] transition-all duration-300"
       >
         <div className="relative overflow-visible rounded-2xl bg-black/90 backdrop-blur-[12px] group/nav">
