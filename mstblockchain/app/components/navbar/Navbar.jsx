@@ -10,7 +10,30 @@ const navItems = [
   { label: 'Build', href: '#', active: true },
   { label: 'Learn', href: '#', active: false },
   { label: 'Products', href: '#', active: false },
-  { label: 'Use Cases', href: 'test.html', active: false }
+  { label: 'Usecases', href: '/usecases/supply-chain', active: false }
+];
+
+const usecases = [
+  { id: '01', title: 'Supply Chain Logistics', link: '/usecases/supply-chain' },
+  { id: '02', title: 'Real Estate Tokenization', link: '/usecases/real-estate' },
+  { id: '03', title: 'DeFi Liquidity', link: '/usecases/defi-liquidity' },
+  { id: '04', title: 'Secure Healthcare', link: '/usecases/healthcare' },
+  { id: '05', title: 'Metaverse Gaming', link: '/usecases/metaverse' },
+  { id: '06', title: 'Digital Identity', link: '/usecases/digital-identity' },
+  { id: '07', title: 'Yield Aggregators', link: '/usecases/yield' },
+  { id: '08', title: 'Carbon Credits', link: '/usecases/carbon' },
+  { id: '09', title: 'Cross-border Pay', link: '/usecases/cross-border' },
+  { id: '10', title: 'Asset Management', link: '/usecases/asset-management' },
+  { id: '11', title: 'Oracle Networks', link: '/usecases/oracles' },
+  { id: '12', title: 'DAO Governance', link: '/usecases/dao' },
+  { id: '13', title: 'Privacy Layers', link: '/usecases/privacy' },
+  { id: '14', title: 'Escrow Services', link: '/usecases/escrow' },
+  { id: '15', title: 'Insurance Claims', link: '/usecases/insurance' },
+  { id: '16', title: 'NFT Marketplace', link: '/usecases/nft' },
+  { id: '17', title: 'Staking Protocols', link: '/usecases/staking' },
+  { id: '18', title: 'Token Vesting', link: '/usecases/vesting' },
+  { id: '19', title: 'ZK Proofs', link: '/usecases/zk' },
+  { id: '20', title: 'Lending Pools', link: '/usecases/lending' }
 ];
 
 const buildResources = [
@@ -71,22 +94,48 @@ const productsResources = [
 ];
 
 export default function Navbar() {
+  const navbarRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isBuildOpen, setIsBuildOpen] = useState(false);
   const [isLearnOpen, setIsLearnOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [isUseCasesOpen, setIsUseCasesOpen] = useState(false);
   const [mobileBuildOpen, setMobileBuildOpen] = useState(false);
   const [mobileLearnOpen, setMobileLearnOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [mobileUseCasesOpen, setMobileUseCasesOpen] = useState(false);
   const buildCloseTimerRef = useRef(null);
   const learnCloseTimerRef = useRef(null);
   const productsCloseTimerRef = useRef(null);
+  const useCasesCloseTimerRef = useRef(null);
+
+  const closeAllMenus = () => {
+    setIsBuildOpen(false);
+    setIsLearnOpen(false);
+    setIsProductsOpen(false);
+    setIsUseCasesOpen(false);
+  };
 
   useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+        setIsOpen(false);
+        closeAllMenus();
+        setMobileBuildOpen(false);
+        setMobileLearnOpen(false);
+        setMobileProductsOpen(false);
+        setMobileUseCasesOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+
     return () => {
       if (buildCloseTimerRef.current) clearTimeout(buildCloseTimerRef.current);
       if (learnCloseTimerRef.current) clearTimeout(learnCloseTimerRef.current);
       if (productsCloseTimerRef.current) clearTimeout(productsCloseTimerRef.current);
+      if (useCasesCloseTimerRef.current) clearTimeout(useCasesCloseTimerRef.current);
+      document.removeEventListener('mousedown', handleOutsideClick);
     };
   }, []);
 
@@ -118,6 +167,16 @@ export default function Navbar() {
   const closeProductsMenu = () => {
     if (productsCloseTimerRef.current) clearTimeout(productsCloseTimerRef.current);
     productsCloseTimerRef.current = setTimeout(() => setIsProductsOpen(false), 150);
+  };
+
+  const openUseCasesMenu = () => {
+    if (useCasesCloseTimerRef.current) clearTimeout(useCasesCloseTimerRef.current);
+    setIsUseCasesOpen(true);
+  };
+
+  const closeUseCasesMenu = () => {
+    if (useCasesCloseTimerRef.current) clearTimeout(useCasesCloseTimerRef.current);
+    useCasesCloseTimerRef.current = setTimeout(() => setIsUseCasesOpen(false), 150);
   };
 
   const dropdownPanelClass =
@@ -261,8 +320,50 @@ export default function Navbar() {
     </motion.div>
   );
 
+  const renderUseCasesDropdown = () => (
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+      onMouseEnter={openUseCasesMenu}
+      onMouseLeave={closeUseCasesMenu}
+      className="absolute left-1/2 top-full mt-4 w-[460px] max-w-[92vw] -translate-x-1/2 rounded-2xl border border-black/10 bg-white px-4 py-3 text-black shadow-[0_18px_48px_rgba(0,0,0,0.14)] backdrop-blur-md"
+    >
+      <div className="mb-3 flex items-center justify-between">
+        <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#FF2D2D]">USECASES</p>
+        <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-black/45">20 sectors</span>
+      </div>
+
+      <div className="relative">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-6 bg-gradient-to-r from-white to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-6 bg-gradient-to-l from-white to-transparent" />
+
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.02, delayChildren: 0.03 } } }}
+          className="flex max-h-[400px] flex-col gap-2 overflow-y-auto overflow-x-hidden scroll-smooth pb-2 pr-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {usecases.map((item) => (
+            <motion.div key={item.id} variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0 } }}>
+              <Link
+                href={item.link}
+                className="group inline-flex w-full items-center gap-2 rounded-full border border-[#eee] bg-white px-4 py-2.5 text-sm font-medium text-black transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-[#FF2D2D] hover:text-[#FF2D2D] hover:shadow-[0_8px_20px_rgba(255,45,45,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF2D2D]/40"
+              >
+                <span className="font-extrabold tracking-[0.08em] text-[#FF2D2D]">{item.id}</span>
+                <span>{item.title}</span>
+              </Link>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+
   return (
     <motion.header
+      ref={navbarRef}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -335,6 +436,20 @@ export default function Navbar() {
                       </button>
 
                       <AnimatePresence>{isProductsOpen ? renderProductsDropdown() : null}</AnimatePresence>
+                    </div>
+                  ) : item.label === 'Usecases' ? (
+                    <div className="relative" onMouseEnter={openUseCasesMenu} onMouseLeave={closeUseCasesMenu}>
+                      <button
+                        type="button"
+                        onClick={() => setIsUseCasesOpen((prev) => !prev)}
+                        className={navLinkClass(false)}
+                        aria-expanded={isUseCasesOpen}
+                      >
+                        <span>Usecases</span>
+                        <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-[#ff2d2d] transition-all duration-300 group-hover:w-full" />
+                      </button>
+
+                      <AnimatePresence>{isUseCasesOpen ? renderUseCasesDropdown() : null}</AnimatePresence>
                     </div>
                   ) : (
                     <Link href={item.href} className={navLinkClass(item.active)}>
@@ -413,6 +528,7 @@ export default function Navbar() {
                 setMobileBuildOpen(false);
                 setMobileLearnOpen(false);
                 setMobileProductsOpen(false);
+                setMobileUseCasesOpen(false);
               }}
               className="group relative inline-flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/5 text-white lg:hidden"
             >
@@ -575,8 +691,46 @@ export default function Navbar() {
                 ) : null}
               </AnimatePresence>
 
+              <button
+                type="button"
+                onClick={() => setMobileUseCasesOpen((prev) => !prev)}
+                className="mt-1 flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-bold lowercase text-white/60 transition-all hover:bg-white/5 hover:text-white"
+              >
+                <span className="flex items-center gap-3">
+                  <span className="h-1.5 w-1.5 rounded-full bg-white/20 shadow-sm" />
+                  Usecases
+                </span>
+                <ChevronRight size={16} className={`transition-transform duration-300 ${mobileUseCasesOpen ? 'rotate-90' : ''}`} />
+              </button>
+
+              <AnimatePresence>
+                {mobileUseCasesOpen ? (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0, y: -6 }}
+                    animate={{ opacity: 1, height: 'auto', y: 0 }}
+                    exit={{ opacity: 0, height: 0, y: -6 }}
+                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden rounded-xl border border-white/10 bg-white/5 px-3 py-3"
+                  >
+                    <div className="grid max-h-[450px] grid-cols-1 gap-2 overflow-y-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid-cols-2">
+                      {usecases.map((item) => (
+                        <Link
+                          key={item.id}
+                          href={item.link}
+                          onClick={() => setIsOpen(false)}
+                          className="rounded-xl border border-white/10 bg-black/20 px-3 py-3 transition-all hover:border-[#EA2828]/70 hover:bg-white/5"
+                        >
+                          <div className="text-[10px] font-extrabold uppercase tracking-[0.12em] text-[#EA2828]">{item.id}</div>
+                          <div className="mt-1 text-xs font-semibold text-white/85">{item.title}</div>
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                ) : null}
+              </AnimatePresence>
+
               {navItems
-                .filter((item) => item.label !== 'Build' && item.label !== 'Learn' && item.label !== 'Products')
+                .filter((item) => item.label !== 'Build' && item.label !== 'Learn' && item.label !== 'Products' && item.label !== 'Usecases')
                 .map((item) => (
                   <Link
                     key={item.label}

@@ -2,7 +2,7 @@ import HeroSection from './components/hero/HeroSection';
 import WhatIsMST from './components/mst-info/WhatIsMST';
 import Navbar from './components/navbar/Navbar';
 // <<<<<<< HEAD
-import ProductShowcase from './components/productSection/ProductShowcase';
+
 // import ProductMobileCanvas from './components/productSection/ProductShowcase';
 // =======
 import UseCases from './components/UseCases/UseCase';
@@ -16,7 +16,7 @@ export default function HomePage() {
 {/* <<<<<<< HEAD */}
 {/* ======= */}
       <WhatIsMST />
-      <ProductShowcase/>
+      
       <UseCases/>
 {/* >>>>>>> 464d08086313c4017d87e5cb72665f336717e512 */}
     </main>

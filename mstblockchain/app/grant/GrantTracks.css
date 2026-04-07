@@ -1,0 +1,109 @@
+.grant-section {
+  width: 100%;
+  padding: 5rem 0;
+}
+
+.grant-section .container {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+}
+
+.grant-section .header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.grant-section .main-title {
+  font-size: clamp(2.1rem, 6vw, 4.2rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  color: #111;
+}
+
+.grant-section .subtitle {
+  margin-top: 0.8rem;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+}
+
+.grant-section .red-text {
+  color: #ff2d2d;
+}
+
+.grant-section .grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  column-gap: 4rem;
+  align-items: center;
+  margin-bottom: 2.8rem;
+}
+
+.grant-section h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.55rem;
+  color: #111;
+}
+
+.grant-section p {
+  color: rgba(0, 0, 0, 0.75);
+  line-height: 1.7;
+}
+
+.grant-section ul {
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.grant-section li {
+  margin: 0.45rem 0;
+  color: #111;
+}
+
+.grant-section .hero-wrapper {
+  position: relative;
+}
+
+.grant-section .hero-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.grant-section .hero-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/10;
+}
+
+.grant-section .hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.grant-section .hero-img.active {
+  opacity: 1;
+}
+
+.grant-section .hero-glow-1,
+.grant-section .hero-glow-2 {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .grant-section .grid {
+    grid-template-columns: 1fr;
+  }
+}
