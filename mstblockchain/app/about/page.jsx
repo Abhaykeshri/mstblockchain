@@ -144,7 +144,7 @@ const AboutUs = () => {
                 key={i}
                 className="group relative p-10 rounded-[2rem] bg-white border border-gray-100 hover:border-red-200 shadow-sm hover:shadow-xl transition-all duration-500"
               >
-                <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                <div key={i} className="absolute top-0 right-0 p-8 opacity-5  group-hover:opacity-10 transition-opacity">
                    <FiGlobe className="w-24 h-24 text-red-600" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
@@ -165,7 +165,7 @@ const AboutUs = () => {
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-black mb-4">Core <span className="text-red-600">Infrastructure</span></h2>
+            <h2 className="text-4xl font-extrabold mb-4">Core <span className="text-red-600">Infrastructure</span></h2>
             <p className="text-gray-500 max-w-2xl mx-auto">Enterprise-grade features designed for high-throughput applications.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -178,7 +178,7 @@ const AboutUs = () => {
                 <div className="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6">
                   {item.icon}
                 </div>
-                <h4 className="font-bold text-xl mb-3 text-gray-900">{item.title}</h4>
+                <h4 className="font-extrabold text-xl mb-3 text-gray-900">{item.title}</h4>
                 <p className="text-gray-500 leading-relaxed text-sm">{item.desc}</p>
               </motion.div>
             ))}
@@ -189,7 +189,7 @@ const AboutUs = () => {
       {/* --- TEAM SECTION (Minimalist) --- */}
       <section className="py-24 bg-gradient-to-b from-transparent to-red-50/50">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-black text-center mb-16">The <span className="text-red-600">Architects</span></h2>
+          <h2 className="text-4xl font-extrabold text-center mb-16">The <span className="text-red-600">Architects</span></h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
             {team.map((member, i) => (
               <motion.div key={i} {...fadeInUp} className="text-center group">
@@ -199,7 +199,7 @@ const AboutUs = () => {
                         <FiUsers size={32} />
                     </div>
                 </div>
-                <h4 className="font-bold text-gray-900">{member.name}</h4>
+                <h4 className="font-extabold text-gray-900">{member.name}</h4>
                 <p className="text-xs font-bold text-red-500 uppercase tracking-tighter">{member.role}</p>
               </motion.div>
             ))}
@@ -210,7 +210,7 @@ const AboutUs = () => {
       {/* --- WHY CHOOSE (Checklist) --- */}
       <section className="py-24">
         <div className="max-w-4xl mx-auto px-6 bg-white border border-gray-100 rounded-[3rem] p-12 shadow-xl shadow-red-100/20">
-          <h2 className="text-3xl font-black mb-10 text-center">Why Builders Choose <span className="text-red-600">MST</span></h2>
+          <h2 className="text-3xl font-extrabold mb-10 text-center">Why Builders Choose <span className="text-red-600">MST</span></h2>
           <div className="grid md:grid-cols-2 gap-6">
             {[
               "Lightning-fast (100k+ TPS)", "Near-zero gas fees",
@@ -219,7 +219,7 @@ const AboutUs = () => {
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50/50 hover:bg-red-50 transition-colors">
                 <FiCheckCircle className="text-green-500 flex-shrink-0" />
-                <span className="font-semibold text-gray-700">{item}</span>
+                <span className="font-bold text-gray-700">{item}</span>
               </div>
             ))}
           </div>
