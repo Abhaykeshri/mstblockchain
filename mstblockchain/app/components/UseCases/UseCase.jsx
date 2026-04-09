@@ -1,6 +1,8 @@
 "use client";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const useCases = [
   { id: "01", title: "Supply Chain", desc: "Track goods across global networks with immutable records.", size: "tall", icon: "chain" },
@@ -48,13 +50,24 @@ const icons = {
   percent: <><line x1="19" y1="5" x2="5" y2="19" /><circle cx="6.5" cy="6.5" r="2.5" /><circle cx="17.5" cy="17.5" r="2.5" /></>,
 };
 
-const sizeMap = { small: "h-[120px]", medium: "h-[180px]", tall: "h-[240px]" };
+const sizeMap = {
+  small: "h-[120px]",
+  medium: "h-[180px]",
+  tall: "h-[240px]",
+};
 
 const Card = ({ item, index }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const router = useRouter();
+
+  const handleClick = () => {
+    const slug = item.title.toLowerCase().replace(/\s+/g, "-").replace(/\./g, "");
+    router.push(`/usecase-pages/${slug}`);
+  };
 
   return (
     <motion.div
+      onClick={handleClick}
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
@@ -63,103 +76,59 @@ const Card = ({ item, index }) => {
       onMouseLeave={() => setIsHovered(false)}
       className={`
         relative group cursor-pointer overflow-hidden rounded-[2rem] border border-black
-        p-7 flex flex-col justify-end
-        transition-all duration-500
+        p-7 flex flex-col justify-end transition-all duration-500
         ${sizeMap[item.size]}
-        /* HOVER: Background turns Red */
         hover:bg-red-600 hover:border-red-600 hover:shadow-2xl hover:shadow-red-500/30
         ${isHovered ? "bg-red-600" : "bg-white/60 backdrop-blur-xl"}
       `}
       style={{ breakInside: "avoid" }}
     >
-      {/* Icon Background Glow */}
+      {/* BIG ICON */}
+      <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 pointer-events-none ${isHovered ? "opacity-0 scale-75" : "opacity-70 scale-100 text-zinc-300"}`}>
+        <svg className="w-20 h-20 lg:w-24 lg:h-24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+          {icons[item.icon]}
+        </svg>
+      </div>
+
+      {/* Glow */}
       <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/0 group-hover:bg-white/10 blur-3xl transition-all duration-700" />
 
-      {/* Dynamic Icon: Turns White on Hover */}
-      <div className={`
-        absolute top-7 right-7 transition-all duration-500
-        ${isHovered ? "text-white scale-110 -rotate-12" : "text-zinc-300"}
-      `}>
+      {/* Small icon */}
+      <div className={`absolute top-7 right-7 transition-all duration-500 ${isHovered ? "text-white scale-110 -rotate-12" : "text-zinc-300"}`}>
         <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
           {icons[item.icon]}
         </svg>
       </div>
 
       <div className="relative z-10">
-        {/* Title: Turns White on Hover */}
-        <h3 className={`
-          font-black text-base lg:text-lg leading-tight tracking-tight uppercase transition-colors duration-300
-          ${isHovered ? "text-white" : "text-zinc-800"}
-        `}>
+        <h3 className={`font-black text-base lg:text-lg uppercase transition-colors ${isHovered ? "text-white" : "text-zinc-800"}`}>
           {item.title}
         </h3>
 
         <AnimatePresence>
           {isHovered && (
             <motion.p
-              initial={{ opacity: 0, height: 0, y: 10 }}
-              animate={{ opacity: 1, height: "auto", y: 0 }}
-              exit={{ opacity: 0, height: 0, y: 10 }}
-              className="text-[12px] leading-relaxed font-medium pt-3 text-red-50"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="text-[12px] pt-3 text-red-50"
             >
               {item.desc}
             </motion.p>
           )}
         </AnimatePresence>
       </div>
-
-      {/* Decorative Corner Accent */}
-      <div className="absolute top-0 right-0 w-8 h-8 bg-gradient-to-bl from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
     </motion.div>
   );
 };
 
 const UseCases = () => {
   return (
-    <section className="relative w-full bg-[#fcfcfc] py-24 overflow-hidden min-h-screen">
-      {/* --- LIVING ORBITAL BACKGROUND --- */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-40">
-        <motion.div
-          animate={{ rotate: [360, 0] }}
-          transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
-          className="absolute top-[0%] -left-[35%] w-[110%] h-[110%] border-[0.8px] border-red-200 rounded-full hidden lg:flex items-center justify-center"
-        >
-          <div className="absolute w-[8px] h-[8px] bg-red-500 rounded-full bottom-[18%] right-[8%] shadow-[0_0_15px_rgba(239,68,68,0.5)]" />
-        </motion.div>
-
-        <motion.div
-          animate={{ rotate: [0, 360] }}
-          transition={{ duration: 45, repeat: Infinity, ease: 'linear' }}
-          className="absolute -top-[20%] -left-[60%] w-[140%] h-[140%] border-[1px] border-zinc-200 rounded-full border-dashed hidden lg:flex items-center justify-center"
-        >
-          <div className="absolute w-2.5 h-2.5 bg-red-600 rounded-full top-[12%] shadow-[0_0_20px_rgba(220,38,38,0.4)]" />
-        </motion.div>
-      </div>
-
-      {/* --- CONTENT LAYER --- */}
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6">
-        <header className="mb-20">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-3 mb-4"
-          >
-           
-            
-          </motion.div>
-          
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-zinc-900 font-black uppercase leading-[0.85] tracking-tighter"
-            style={{ fontSize: "clamp(48px, 8vw, 110px)" }}
-          >
-            Use 
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-red-500 to-red-500">
-              case
-            </span>
-          </motion.h2>
-        </header>
+    <section className="w-full bg-[#fcfcfc] py-24 min-h-screen">
+      <div className="max-w-[1400px] mx-auto px-6">
+        <h2 className="text-6xl font-black mb-20">
+          Use <span className="text-red-600">case</span>
+        </h2>
 
         <div className="columns-1 sm:columns-2 lg:columns-4 xl:columns-5 gap-6 space-y-6">
           {useCases.map((item, i) => (

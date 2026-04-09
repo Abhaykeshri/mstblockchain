@@ -5,14 +5,11 @@ import ExplorerSection from './components/Explorer/Explorersection';
 import HeroSection from './components/hero/HeroSection';
 import WhatIsMST from './components/mst-info/WhatIsMST';
 import MSTInstitutional from './components/MSTInstitutional/MSTInstitutional';
-
-// <<<<<<< HEAD
 import ProductShowcase from './components/productSection/ProductShowcase';
-// import ProductMobileCanvas from './components/productSection/ProductShowcase';
-// =======
+
 import UseCases from './components/UseCases/UseCase';
 import StructuralPurity from './components/Whitepaper/StructuralPurity';
-// >>>>>>> 464d08086313c4017d87e5cb72665f336717e512
+import FAQSection from './components/Faq/FAQSection';
 
 export default function HomePage() {
   return (
@@ -26,10 +23,12 @@ export default function HomePage() {
       <UseCases/>
       <ExplorerSection/>
       <EcosystemSection/>
-      <StructuralPurity/>
+      
       <MSTBlogSection/>
+      <StructuralPurity/>
       <MSTEventSection/>
       <MSTInstitutional/>
+      <FAQSection/>
 {/* >>>>>>> 464d08086313c4017d87e5cb72665f336717e512 */}
     </main>
   );

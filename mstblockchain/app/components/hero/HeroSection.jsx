@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { motion, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
+import { motion, useMotionValue, useTransform, animate, useInView, AnimatePresence } from 'framer-motion';
 import HeroImage from './HeroImage';
 
 // --- DATA ---
@@ -12,15 +12,28 @@ const slides = [
   { src: '/img2.jpg', alt: 'Decentralized Network' }
 ];
 
+const headings = [
+  "An Ecosystem Where *Innovation* Takes Shape",
+  "Designed for *Scale*. Built for the *Future*.",
+  "Turning Blockchain *Potential* into Real *Utility*"
+];
+
 const stats = [
   { label: 'Finality', value: 400, suffix: 'ms', active: true },
   { label: 'Active Nodes', value: 12400, suffix: '+', active: false },
   { label: 'Total Value', value: 4.2, prefix: '$', suffix: 'B+', active: false }
 ];
 
-const partners = ['CORE_SYS', 'N_NODES', 'QUANT_LAYER', 'HEX_DATA', 'STRUC_X'];
+// 🔥 LOGOS
+const partnerImages = [
+  '/logos/1.png',
+  '/logos/2.png',
+  '/logos/3.png',
+  '/logos/4.png',
+  '/logos/5.png'
+];
 
-// --- COUNTUP COMPONENT ---
+// --- COUNTUP ---
 function CountUp({ value, prefix = '', suffix = '', decimals = 0 }) {
   const count = useMotionValue(0);
 
@@ -48,125 +61,149 @@ function CountUp({ value, prefix = '', suffix = '', decimals = 0 }) {
   return <motion.span ref={ref}>{rounded}</motion.span>;
 }
 
-// --- MAIN COMPONENT ---
+// highlight words
+function formatHeading(text) {
+  const parts = text.split('*');
+  return parts.map((part, i) =>
+    i % 2 === 1 ? (
+      <span key={i} className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D2D] via-red-600 to-rose-500">
+        {part}
+      </span>
+    ) : part
+  );
+}
+
+// --- MAIN ---
 export default function HeroSection() {
   const [slideCount, setSlideCount] = useState(0);
-  const [mounted, setMounted] = useState(false);
+  const [headingIndex, setHeadingIndex] = useState(0);
 
   useEffect(() => {
-    setMounted(true);
-    const interval = setInterval(() => {
+    const slideInterval = setInterval(() => {
       setSlideCount((prev) => prev + 1);
     }, 6000);
-    return () => clearInterval(interval);
+
+    const headingInterval = setInterval(() => {
+      setHeadingIndex((prev) => (prev + 1) % headings.length);
+    }, 3000);
+
+    return () => {
+      clearInterval(slideInterval);
+      clearInterval(headingInterval);
+    };
   }, []);
 
   return (
     <section className="relative min-h-screen w-full bg-[#FAFAFA] overflow-hidden font-[var(--font-inter)]">
 
-      {/* BACKGROUND */}
-      
-
       <div className="relative z-10 mx-auto max-w-[90rem] min-h-screen grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] items-center gap-10 px-6 pt-28 pb-12">
 
-        {/* LEFT SIDE */}
+        {/* LEFT */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           className="flex flex-col items-center text-center lg:items-start lg:text-left"
         >
-          <h1 className="font-[var(--font-space-grotesk)] text-5xl md:text-7xl font-extrabold uppercase leading-[0.85] tracking-tight text-black">
-            Architecting <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D2D] via-red-600 to-rose-500 animate-gradient-x py-1">
-              The Web3
-            </span> <br />
-            <span className="text-4xl md:text-5xl text-black/80">
-              Settlement Layer.
-            </span>
-          </h1>
+          {/* HEADING */}
+          <div className="h-[160px] md:h-[200px]">
+            <AnimatePresence mode="wait">
+              <motion.h1
+                key={headingIndex}
+                initial={{ opacity: 0, y: 25 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -25 }}
+                transition={{ duration: 0.5 }}
+                className="font-[var(--font-space-grotesk)] text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-black"
+              >
+                {formatHeading(headings[headingIndex])}
+              </motion.h1>
+            </AnimatePresence>
+          </div>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-black/60 font-medium border-l-2 border-[#FF2D2D]/30 pl-4 bg-gradient-to-r from-[#FF2D2D]/5 to-transparent py-2 text-left">
-            A performance-first blockchain stack engineered for institutional trust and global finality. Ship with deterministic speed and resilient security.
+            A performance-first blockchain stack engineered for institutional trust and global finality.
           </p>
 
           {/* BUTTONS */}
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link href="#" className="px-8 py-3 bg-black text-white text-[11px] font-bold uppercase tracking-widest rounded-full hover:bg-[#EA3446] transition-all shadow-lg shadow-black/10">
-              Launch App
-            </Link>
+          <div className="mt-6 sm:mt-8 grid grid-cols-2 sm:flex gap-2 sm:gap-4 w-full max-w-md">
+  
+  <Link
+    href="#"
+    className="text-center px-4 sm:px-8 py-2.5 sm:py-3 bg-black text-white text-[9px] sm:text-[11px] font-bold uppercase tracking-wide sm:tracking-widest rounded-full hover:bg-[#EA3446] transition-all shadow-md sm:shadow-lg shadow-black/10"
+  >
+    Get Started
+  </Link>
 
-            <Link href="#" className="px-8 py-3 border border-black/10 bg-white/50 backdrop-blur-sm text-black text-[11px] font-bold uppercase tracking-widest rounded-full hover:border-[#FF2D2D] transition-all">
-              Documentation
-            </Link>
-          </div>
+  <Link
+    href="#"
+    className="text-center px-4 sm:px-8 py-2.5 sm:py-3 border border-black/10 bg-white/50 backdrop-blur-sm text-black text-[9px] sm:text-[11px] font-bold uppercase tracking-wide sm:tracking-widest rounded-full hover:border-[#FF2D2D] transition-all"
+  >
+    Documentation
+  </Link>
+
+</div>
 
           {/* STATS */}
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-xl">
-            {stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="group p-4 bg-white/60 border border-black/5 rounded-2xl backdrop-blur-md hover:border-[#FF2D2D]/40 transition-all text-left"
-              >
-                <p className="text-[10px] uppercase tracking-widest text-black/40 flex items-center gap-2">
-                  {stat.active && (
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#FF2D2D] animate-ping" />
-                  )}
-                  {stat.label}
-                </p>
+        <div className="mt-8 sm:mt-12 grid grid-cols-3 gap-2 sm:gap-4 w-full max-w-xl ">
+  {stats.map((stat) => (
+    <div
+      key={stat.label}
+      className="group p-2 sm:p-4 bg-white/60 border border-black/5 rounded-lg sm:rounded-2xl backdrop-blur-md hover:border-[#FF2D2D]/40 transition-all text-left"
+    >
+      <p className="text-[8px] sm:text-[10px] uppercase tracking-wide text-black/40 flex items-center gap-1">
+        {stat.active && (
+          <span className="h-1 w-1 rounded-full bg-[#FF2D2D] animate-ping" />
+        )}
+        {stat.label}
+      </p>
 
-                <p className="text-2xl font-bold mt-1 text-black font-[var(--font-space-grotesk)] group-hover:text-[#FF2D2D] transition-colors">
-                  <CountUp
-                    value={stat.value}
-                    prefix={stat.prefix}
-                    suffix={stat.suffix}
-                    decimals={stat.value % 1 !== 0 ? 1 : 0}
-                  />
-                </p>
-              </div>
-            ))}
-          </div>
+      <p className="text-sm sm:text-2xl font-bold mt-1 text-black font-[var(--font-space-grotesk)] group-hover:text-[#FF2D2D] transition-colors">
+        <CountUp
+          value={stat.value}
+          prefix={stat.prefix}
+          suffix={stat.suffix}
+          decimals={stat.value % 1 !== 0 ? 1 : 0}
+        />
+      </p>
+    </div>
+  ))}
+</div>
         </motion.div>
 
-        {/* RIGHT SIDE (NOW COMPONENT) */}
+        {/* RIGHT */}
         <HeroImage slides={slides} slideCount={slideCount} />
 
       </div>
 
-      {/* PARTNERS */}
-      <div className="absolute bottom-0 w-full py-8 border-t border-black/5 bg-white/50 backdrop-blur-sm z-10">
-        <div className="flex overflow-hidden">
-          <div className="flex gap-20 animate-marquee whitespace-nowrap px-10">
-            {[...partners, ...partners].map((tag, i) => (
-              <span
-                key={i}
-                className="text-sm font-bold tracking-[0.3em] text-black/20 uppercase hover:text-[#FF2D2D] transition-colors"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+      {/* 🔥 PERFECT MARQUEE */}
+      <div className="absolute bottom-0 w-full py-4 border-t border-black/5 bg-white/60 backdrop-blur-sm z-10 overflow-hidden">
+
+        <div className="marquee-track flex items-center">
+          {[...partnerImages, ...partnerImages].map((src, i) => (
+            <div key={i} className="mx-8 flex-shrink-0">
+              <img
+                src={src}
+                alt="partner"
+                className="h-5 opacity-40 hover:opacity-90 transition duration-300"
+              />
+            </div>
+          ))}
         </div>
+
       </div>
 
-      {/* GLOBAL STYLES */}
+      {/* STYLES */}
       <style jsx global>{`
-        @keyframes marquee {
+        .marquee-track {
+          display: flex;
+          width: max-content;
+          animation: marqueeScroll 30s linear infinite;
+        }
+
+        @keyframes marqueeScroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
-        }
-
-        .animate-marquee {
-          animation: marquee 25s linear infinite;
-        }
-
-        .animate-gradient-x {
-          background-size: 200% auto;
-          animation: gradient-shimmer 4s linear infinite;
-        }
-
-        @keyframes gradient-shimmer {
-          to { background-position: 200% center; }
         }
       `}</style>
     </section>

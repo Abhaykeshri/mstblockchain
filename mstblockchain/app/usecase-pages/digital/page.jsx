@@ -2,70 +2,69 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { CheckCircle2, ShieldCheck, Database, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, Database, ArrowRight, Home } from 'lucide-react';
 import { useState } from "react";
-import FormModal from "@/app/components/form/FormModal";
+// import FormModal from "@/app/components/form/FormModal";
 
 const featureItems = [
   {
-    title: 'Complete Traceability',
-    description: 'Track every movement across suppliers, warehouses, and delivery checkpoints in one immutable stream.',
-    icon: CheckCircle2
-  },
-  {
-    title: 'Anti-Counterfeit Protection',
-    description: 'Verify authenticity with tamper-proof provenance and reduce the risk of fake goods entering the chain.',
+    title: 'Verify Once, Use Everywhere',
+    description: 'Complete identity verification one time and carry a trusted digital credential to every new platform — no repeated forms, no repeated document uploads.',
     icon: ShieldCheck
   },
   {
-    title: 'Shared Source of Truth',
-    description: 'Give every stakeholder the same trusted ledger view for cleaner audits and faster decisions.',
-    icon: Database
+    title: 'Your Data Stays Yours',
+    description: 'SARAL Protocol keeps credentials in your own wallet. Platforms get the verification confirmation they need — without ever holding your personal documents.',
+    icon: CheckCircle2
+  },
+  {
+    title: 'Instant Onboarding',
+    description: 'New users verify in seconds instead of days. Platforms get compliance-ready confirmations instantly — without the overhead of running their own KYC.',
+    icon: Home
   }
 ];
 
 const proofItems = [
   {
-    title: 'National Car Manufacturer',
-    description: 'Vehicle parts are tracked from production to delivery with a verified history for every batch.',
+    title: 'Fintech & Exchange Onboarding',
+    description: 'Users verify once and onboard to multiple financial platforms without repeating KYC — dramatically reducing drop-off at signup.',
     image: '/img3.jpeg',
     alt: 'National car manufacturer supply chain'
   },
   {
-    title: 'Express Post & Shipping',
-    description: 'Package custody and transfer events are recorded to improve transparency and dispute handling.',
+    title: 'Healthcare Provider Access',
+    description: 'Verified patient identity credentials accepted across hospitals, clinics, and telemedicine providers without repeated registration.',
     image: '/1.png',
     alt: 'Express shipping supply chain'
   },
   {
-    title: 'Food & Agriculture Tracking',
-    description: 'Farm-to-shelf visibility helps reduce spoilage, fraud, and recall time with trusted provenance.',
-    image: '/hero-visual-1.svg',
+    title: 'Government Service Portals',
+    description: 'Citizens use a single verified digital identity to access multiple government services — securely and instantly.',
     alt: 'Food and agriculture supply chain'
   }
 ];
 
 const creatorSteps = [
-  'Register the product batch and compliance metadata.',
-  'Create a unique identity for each lot or serialized item.',
-  'Attach transfer events at every custody change.',
-  'Sync certifications, inspections, and quality records.',
-  'Publish final verified status for downstream partners.'
+  'User completes identity verification through an MST-approved onboarding flow',
+  'A verifiable credential (digital proof of identity) is issued and anchored on MST blockchain',
+  'User stores the credential in their own wallet via SARAL Protocol',
+  'When signing up for a new service, user shares the credential — no documents sent',
+  'The new service checks the blockchain to confirm the credential is valid and compliant'
 ];
 
 const verifierSteps = [
-  'Scan the product code or shipment identifier.',
-  'Open the full provenance and custody timeline.',
-  'Validate certificates, handling, and movement records.',
-  'Detect anomalies, gaps, or suspicious updates.',
-  'Approve, flag, or trigger the next action instantly.'
+  'User arrives at a new platforms signup page  ',
+  'Instead of uploading documents, they present their MST identity credential',
+  'Platform checks the credential on the blockchain — instant verification result',
+  'User gains access or compliance clearance without the traditional KYC wait',
+  'All credential interactions are logged with user-controlled permissions for full auditability'
 ];
 
 const stats = [
-  { label: 'Real-Time Visibility', value: '24/7' },
-  { label: '100% Tamper-Proof Records', value: 'Immutable' },
-  { label: 'Zero Blind Spots', value: 'Unified' },
-  { label: 'Instant Anomaly Detection', value: 'Alerts' }
+  { label: 'One', value: 'Verification Needed' },
+  { label: 'Instant', value: 'Onboarding Speed' },
+  { label: 'Zero', value: 'Repeated Document Uploads' },
+  { label: 'Full%', value: 'User Data Control' }
 ];
 
 function SectionFade({ children, className = '' }) {
@@ -159,15 +158,12 @@ const [formType, setFormType] = useState("General Enquiry");
             <div className="relative inline-block">
               <h1 className="font-[var(--font-space-grotesk)] text-4xl font-extrabold tracking-[-0.06em] text-black sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
                 <span className="block">
-                  Supply Chain
-                </span>
-                <span className="mt-2 block text-[#ff2d2d]">
-                  Transparency
+                Digital Identity & KYC
                 </span>
               </h1>
             </div>
             <p className="max-w-2xl text-base leading-relaxed text-black/68 sm:text-lg">
-              Know exactly where products are, where they came from, and who handled them — with a modern blockchain layer built for trust, traceability, and operational clarity.
+              One verification. Trusted everywhere. You stay in control.
             </p>
           </div>
 
@@ -231,10 +227,10 @@ const [formType, setFormType] = useState("General Enquiry");
       <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-10 px-6 py-16 md:px-16 lg:grid-cols-2 lg:items-center">
         <SectionFade className="space-y-5">
           <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">
-            What is Blockchain Supply Chain Transparency?
+         What is Blockchain-Based Digital Identity?
           </h2>
           <p className="max-w-2xl text-base leading-8 text-black/70">
-            Modern supply chains move products through factories, warehouses, shipping routes, and retailers. Blockchain creates a shared, verifiable trail that makes every handoff visible, reducing ambiguity while improving trust, compliance, and coordination.
+           Every time you sign up for a new service — a bank, an exchange, a healthcare platform — you go through the same identity verification process all over again. Upload your ID, take a selfie, wait for approval. It is repetitive, slow, and your sensitive documents end up stored in dozens of different company databases. MST Blockchain makes it possible to verify your identity once, get a digital credential that lives in your own wallet, and simply present that credential to any new service — instantly, without sharing your documents again.
           </p>
         </SectionFade>
 
@@ -272,15 +268,15 @@ const [formType, setFormType] = useState("General Enquiry");
       <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-10 px-6 py-16 md:px-16 lg:grid-cols-2 lg:items-center">
         <SectionFade className="space-y-5 border-l-2 border-[#ff2d2d] pl-5 md:pl-6">
           <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">
-            The Problem: Supply Chains are Full of Blind Spots
+            The Problem: KYC is Repetitive, Expensive, and Insecure
           </h2>
           <p className="text-base leading-8 text-black/70">
-            Tracking failures, fraud, and inefficiencies are common when data is siloed across multiple systems. Leaders often lack a single source of truth for audits, recalls, and exception handling.
+          Traditional Know Your Customer (KYC) processes cost businesses enormous time and money — and still fail regularly. Customers abandon signups because verification takes too long. Centralized identity databases become major targets for data breaches. Sensitive personal documents get stored by dozens of companies, most of which never needed to hold them in the first place.
           </p>
 
           <h3 className="pt-2 font-[var(--font-space-grotesk)] text-2xl font-bold text-black">How MST Fixes It</h3>
           <p className="text-base leading-8 text-black/70">
-            MST turns supply chain events into immutable on-chain records. Every transfer, inspection, and certification update becomes instantly auditable and accessible to authorized participants in real time.
+          With MST's Digital Identity system, a user goes through verification once with an approved provider. A verifiable credential is issued — essentially a digital proof that says "this person's identity has been verified" — and it is anchored on the blockchain. The user stores this in their own wallet via the SARAL Protocol. When they sign up for a new service, they simply share the credential. The new service checks the blockchain to confirm it is valid — no documents shared, no data stored.
           </p>
         </SectionFade>
 
@@ -299,10 +295,11 @@ const [formType, setFormType] = useState("General Enquiry");
 
       {/* PROOFS */}
       <section className="mx-auto w-full max-w-[90rem] px-6 py-16 md:px-16">
+        
         <SectionFade className="space-y-3">
           <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">Proofs of Concept</h2>
           <p className="max-w-2xl text-base leading-8 text-black/68">
-            Practical pilots that show how blockchain supply chain transparency improves traceability, trust, and operational performance.
+            Real-world examples showing how this use case works in practice across different industries and regions.
           </p>
         </SectionFade>
 
@@ -322,14 +319,47 @@ const [formType, setFormType] = useState("General Enquiry");
       </section>
 
       {/* STEPS */}
-      <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-6 px-6 py-16 md:px-16 lg:grid-cols-2">
-        <SectionFade>
-          <StepFlow title="Creator / Issuer Flow" steps={creatorSteps} />
-        </SectionFade>
-        <SectionFade>
-          <StepFlow title="User / Verifier Flow" steps={verifierSteps} accent />
-        </SectionFade>
-      </section>
+          <section className='mx-auto text-center w-full max-w-[90rem] px-6 py-16 md:px-16'>
+                  <h3 className="pt-2 font-[var(--font-space-grotesk)] text-2xl font-bold text-black">See How It Works Step by Step</h3>
+        <p className="text-base leading-8 text-black/70">
+         Two simple flows — one for whoever is issuing or creating, and one for whoever is verifying or using. Both powered by MST blockchain behind the scenes.
+          </p>
+
+<section
+  className="mx-auto w-full max-w-[90rem] px-2 py-10 sm:px-6 sm:py-16 md:px-16
+    grid grid-cols-1 gap-6
+    lg:grid-cols-2 lg:gap-6
+    min-h-0"
+>
+
+  {/* LEFT */}
+
+  <SectionFade className="h-full min-h-0 flex flex-col">
+    <div className="flex flex-col h-full min-h-0 flex-1 bg-white rounded-xl overflow-hidden">
+      {/* Header (fixed) */}
+      <div className="p-4 border-b font-semibold">Creator / Issuer Flow</div>
+      {/* Scrollable content */}
+      <div className="flex-1 w-full min-h-0 overflow-y-auto p-4">
+        <StepFlow steps={creatorSteps} />
+      </div>
+    </div>
+  </SectionFade>
+
+  {/* RIGHT */}
+
+  <SectionFade className="h-full min-h-0 flex flex-col">
+    <div className="flex flex-col h-full min-h-0 flex-1 bg-white rounded-xl overflow-hidden">
+      {/* Header (fixed) */}
+      <div className="p-4 border-b font-semibold">User / Verifier Flow</div>
+      {/* Scrollable content */}
+      <div className="flex-1 w-full min-h-0 overflow-y-auto p-4">
+        <StepFlow steps={verifierSteps} accent />
+      </div>
+    </div>
+  </SectionFade>
+
+</section>
+          </section>
 
       {/* STATS */}
       <section className="mx-auto w-full max-w-[90rem] px-6 pb-20 pt-6 md:px-16">
@@ -339,8 +369,8 @@ const [formType, setFormType] = useState("General Enquiry");
             <div className="relative grid grid-cols-1 gap-4 text-center sm:grid-cols-2 lg:grid-cols-4">
               {stats.map((stat) => (
                 <div key={stat.label} className="rounded-2xl border border-white/10 bg-white/5 px-5 py-5 backdrop-blur-sm">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-white/55">{stat.label}</p>
-                  <p className="mt-2 font-[var(--font-space-grotesk)] text-2xl font-bold tracking-[-0.03em] text-white sm:text-3xl">
+                  <p className="mt-2 font-[var(--font-space-grotesk)] text-2xl font-bold tracking-[-0.03em] text-white sm:text-3xl">{stat.label}</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-white/55">
                     {stat.value}
                   </p>
                 </div>
@@ -350,11 +380,11 @@ const [formType, setFormType] = useState("General Enquiry");
         </SectionFade>
       </section>
 
-      <FormModal 
+      {/* <FormModal 
   open={openForm} 
   setOpen={setOpenForm} 
   formType={formType}
-/>
+/> */}
     </main>
   );
 }

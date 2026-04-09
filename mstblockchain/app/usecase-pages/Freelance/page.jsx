@@ -8,64 +8,64 @@ import FormModal from "@/app/components/form/FormModal";
 
 const featureItems = [
   {
-    title: 'Complete Traceability',
-    description: 'Track every movement across suppliers, warehouses, and delivery checkpoints in one immutable stream.',
+    title: 'Escrow That Works for Both Sides',
+    description: 'Client funds are locked in smart contract escrow from day one. Freelancers know the money exists. Clients know it only releases when work is approved.',
     icon: CheckCircle2
   },
   {
-    title: 'Anti-Counterfeit Protection',
-    description: 'Verify authenticity with tamper-proof provenance and reduce the risk of fake goods entering the chain.',
+    title: 'Transparent Agreement on Chain',
+    description: 'The project scope, milestone definitions, and payment terms are all recorded on-chain at the start. No he-said-she-said — the blockchain has the original agreement.',
     icon: ShieldCheck
   },
   {
-    title: 'Shared Source of Truth',
-    description: 'Give every stakeholder the same trusted ledger view for cleaner audits and faster decisions.',
+    title: 'Automatic Payment Release',
+    description: 'When a milestone is approved, the corresponding payment releases automatically — no chasing invoices, no waiting for bank transfers, no platform delays.',
     icon: Database
   }
 ];
 
 const proofItems = [
   {
-    title: 'National Car Manufacturer',
-    description: 'Vehicle parts are tracked from production to delivery with a verified history for every batch.',
+    title: 'Global Software Development',
+    description: 'International client-developer projects with milestone-based smart contract escrow — automatic payment on delivery confirmation.',
     image: '/img3.jpeg',
-    alt: 'National car manufacturer supply chain'
+    alt: 'Digital Gold Savings Products'
   },
   {
-    title: 'Express Post & Shipping',
-    description: 'Package custody and transfer events are recorded to improve transparency and dispute handling.',
+    title: 'Creative Services Marketplace',
+    description: 'Design, writing, and media projects with transparent deliverable definitions and automated payment release on approval.',
     image: '/1.png',
-    alt: 'Express shipping supply chain'
+    alt: 'Commodity-Backed Collaterals'
   },
   {
-    title: 'Food & Agriculture Tracking',
-    description: 'Farm-to-shelf visibility helps reduce spoilage, fraud, and recall time with trusted provenance.',
+    title: 'Consulting & Professional Services',
+    description: 'Phased consulting engagements with on-chain agreements, milestone tracking, and automatic fee release at each stage.',
     image: '/hero-visual-1.svg',
-    alt: 'Food and agriculture supply chain'
+    alt: 'Cross-Border Commodity Tradings'
   }
 ];
 
 const creatorSteps = [
-  'Register the product batch and compliance metadata.',
-  'Create a unique identity for each lot or serialized item.',
-  'Attach transfer events at every custody change.',
-  'Sync certifications, inspections, and quality records.',
-  'Publish final verified status for downstream partners.'
+  'Client creates a project agreement with milestones, deliverables, and payment amounts for each stage',
+  'Total payment is locked in smart contract escrow — freelancer sees the funds are secured',
+  'Freelancer completes the first milestone and submits work through the platform',
+  'Client reviews and approves the milestone — smart contract automatically releases that milestones payment',
+  'Process repeats for each milestone until project is complete — full record on-chain throughout'
 ];
 
 const verifierSteps = [
-  'Scan the product code or shipment identifier.',
-  'Open the full provenance and custody timeline.',
-  'Validate certificates, handling, and movement records.',
-  'Detect anomalies, gaps, or suspicious updates.',
-  'Approve, flag, or trigger the next action instantly.'
+  'Freelancer sees an available project with transparent terms and locked escrow confirmed',
+  'They accept the agreement — terms are recorded on-chain and both parties are bound',
+  'They complete the first milestone and submit their work for client review',
+  'Client approves — payment for that milestone releases to the freelancers wallet automatically',
+  'Freelancer can see the complete payment history and outstanding milestone schedule at any time'
 ];
 
 const stats = [
-  { label: 'Real-Time Visibility', value: '24/7' },
-  { label: '100% Tamper-Proof Records', value: 'Immutable' },
-  { label: 'Zero Blind Spots', value: 'Unified' },
-  { label: 'Instant Anomaly Detection', value: 'Alerts' }
+  { label: 'Escrow From Day One', value: 'Locked' },
+  { label: 'Payment on Approval', value: 'Auto' },
+  { label: 'Invoice Chasing', value: 'Zero' },
+  { label: 'Agreement Transparency', value: 'Full' }
 ];
 
 function SectionFade({ children, className = '' }) {
@@ -103,7 +103,7 @@ function ProofCard({ title, description, image, alt }) {
     <motion.article
       whileHover={{ y: -6 }}
       transition={{ duration: 0.22 }}
-      className="group overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_14px_32px_rgba(0,0,0,0.06)] transition-all duration-300 hover:shadow-[0_18px_42px_rgba(255,45,45,0.12)]"
+      className="group overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_14px_32px_rgba(0,0,0,0.06)] transition-all duration-300 hover:shadow-[0_18px_42px_rgba(255,45,45,0.12)] min-h-[370px] flex flex-col"
     >
       <div className="relative h-[170px] overflow-hidden bg-[linear-gradient(135deg,rgba(255,45,45,0.16),rgba(0,0,0,0.04))]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,45,45,0.25),transparent_65%)]" />
@@ -115,7 +115,7 @@ function ProofCard({ title, description, image, alt }) {
           className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
         />
       </div>
-      <div className="p-5">
+      <div className="p-5 flex flex-col flex-1">
         <h3 className="font-[var(--font-space-grotesk)] text-lg font-bold text-black">{title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-black/68">{description}</p>
         <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#ff2d2d] transition-transform duration-300 group-hover:translate-x-1">
@@ -128,7 +128,7 @@ function ProofCard({ title, description, image, alt }) {
 
 function StepFlow({ title, steps, accent = false }) {
   return (
-    <div className="rounded-2xl border border-black/10 bg-white p-6 shadow-[0_14px_34px_rgba(0,0,0,0.05)]">
+    <div className="rounded-2xl border border-black/10 bg-white p-6 shadow-[0_14px_34px_rgba(0,0,0,0.05)] min-h-[340px] flex flex-col h-full">
       <h3 className="font-[var(--font-space-grotesk)] text-2xl font-bold tracking-[-0.02em] text-black">{title}</h3>
       <div className="mt-6 space-y-4">
         {steps.map((step, index) => (
@@ -159,54 +159,18 @@ const [formType, setFormType] = useState("General Enquiry");
             <div className="relative inline-block">
               <h1 className="font-[var(--font-space-grotesk)] text-4xl font-extrabold tracking-[-0.06em] text-black sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
                 <span className="block">
-                  Supply Chain
+                 Freelance 
                 </span>
                 <span className="mt-2 block text-[#ff2d2d]">
-                  Transparency
+                 Marketplace
                 </span>
               </h1>
             </div>
             <p className="max-w-2xl text-base leading-relaxed text-black/68 sm:text-lg">
-              Know exactly where products are, where they came from, and who handled them — with a modern blockchain layer built for trust, traceability, and operational clarity.
+              Work, deliver, get paid. Smart contracts make it automatic, fair, and transparent.
             </p>
           </div>
 
-          {/* Responsive Button Group */}
-          <div className="flex flex-col gap-3 sm:flex-row sm:justify-start sm:items-center mt-6 mb-8 w-full">
-
-                      {/* CONTACT */}
-                      <button
-                        onClick={() => {
-                          setFormType("General Enquiry");
-                          setOpenForm(true);
-                        }}
-                        className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#ff2d2d] text-white font-semibold transition-all duration-200 transform hover:scale-105"
-                      >
-                        Contact Us / Enquire
-                      </button>
-
-                      {/* DEMO */}
-                      <button
-                        onClick={() => {
-                          setFormType("Book a Demo");
-                          setOpenForm(true);
-                        }}
-                        className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-black/80 border border-white/20 text-white font-semibold hover:bg-[#ff2d2d]"
-                      >
-                        Book a Demo
-                      </button>
-
-                      {/* EXPERT */}
-                      <button
-                        onClick={() => {
-                          setFormType("Talk to Expert");
-                          setOpenForm(true);
-                        }}
-                        className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-black/80 border border-white/20 text-white font-semibold hover:bg-[#ff2d2d]"
-                      >
-                        Talk to an Expert
-                      </button>
-            </div>
 
           <div className="overflow-hidden rounded-3xl bg-black shadow-none">
             <div className="relative flex h-[280px] items-center justify-center overflow-hidden rounded-3xl bg-[linear-gradient(135deg,rgba(255,45,45,0.22),rgba(0,0,0,0.7))] sm:h-[380px]">
@@ -231,10 +195,10 @@ const [formType, setFormType] = useState("General Enquiry");
       <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-10 px-6 py-16 md:px-16 lg:grid-cols-2 lg:items-center">
         <SectionFade className="space-y-5">
           <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">
-            What is Blockchain Supply Chain Transparency?
+         What is a Blockchain Freelance Marketplace?
           </h2>
           <p className="max-w-2xl text-base leading-8 text-black/70">
-            Modern supply chains move products through factories, warehouses, shipping routes, and retailers. Blockchain creates a shared, verifiable trail that makes every handoff visible, reducing ambiguity while improving trust, compliance, and coordination.
+         A blockchain freelance marketplace uses smart contracts to replace the need for a trusted middleman between a client and a freelancer. Instead of hoping the client will pay after delivery, the payment is locked in a smart contract escrow at the start. Once the defined milestones are completed and approved, the contract automatically releases the payment to the freelancer. No chasing invoices. No disputes about whether payment was due. No platform taking 20% for being in the middle.
           </p>
         </SectionFade>
 
@@ -272,15 +236,15 @@ const [formType, setFormType] = useState("General Enquiry");
       <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-10 px-6 py-16 md:px-16 lg:grid-cols-2 lg:items-center">
         <SectionFade className="space-y-5 border-l-2 border-[#ff2d2d] pl-5 md:pl-6">
           <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">
-            The Problem: Supply Chains are Full of Blind Spots
+           The Problem: Freelancers Often Do Not Get Paid — and Clients Often Get Burned Too
           </h2>
           <p className="text-base leading-8 text-black/70">
-            Tracking failures, fraud, and inefficiencies are common when data is siloed across multiple systems. Leaders often lack a single source of truth for audits, recalls, and exception handling.
+            The global freelance economy is enormous — but it runs on informal trust that frequently breaks down. Freelancers complete work and wait weeks for payment. Clients pay upfront and receive work that does not match what was agreed. Disputes spiral with no fair resolution mechanism. Existing platforms charge high fees to provide basic trust infrastructure — and still do not guarantee outcomes.
           </p>
 
-          <h3 className="pt-2 font-[var(--font-space-grotesk)] text-2xl font-bold text-black">How MST Fixes It</h3>
+          <h3 className="pt-2 font-[var(--font-space-grotesk)] text-2xl font-bold text-black">How MST Fixes It </h3>
           <p className="text-base leading-8 text-black/70">
-            MST turns supply chain events into immutable on-chain records. Every transfer, inspection, and certification update becomes instantly auditable and accessible to authorized participants in real time.
+           On MST Blockchain, a client creates a project with clearly defined milestones and payment amounts for each. The total payment is locked into a smart contract escrow. As the freelancer completes each milestone and the client confirms it, the corresponding payment is automatically released — no delay, no argument, no invoice. If a dispute arises, the transparent on-chain record of exactly what was agreed and what was delivered provides a clear basis for fair resolution.
           </p>
         </SectionFade>
 
@@ -302,7 +266,7 @@ const [formType, setFormType] = useState("General Enquiry");
         <SectionFade className="space-y-3">
           <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">Proofs of Concept</h2>
           <p className="max-w-2xl text-base leading-8 text-black/68">
-            Practical pilots that show how blockchain supply chain transparency improves traceability, trust, and operational performance.
+            Real-world examples showing how this use case works in practice across different industries and regions.
           </p>
         </SectionFade>
 
@@ -311,7 +275,7 @@ const [formType, setFormType] = useState("General Enquiry");
           whileInView="visible"
           viewport={{ once: true, amount: 0.18 }}
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
-          className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+          className="mt grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
         >
           {proofItems.map((item) => (
             <motion.div key={item.title} variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }}>
@@ -322,7 +286,7 @@ const [formType, setFormType] = useState("General Enquiry");
       </section>
 
       {/* STEPS */}
-      <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-6 px-6 py-16 md:px-16 lg:grid-cols-2">
+      <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-6 px-6 py-16 md:px-16 lg:grid-cols-2 items-stretch">
         <SectionFade>
           <StepFlow title="Creator / Issuer Flow" steps={creatorSteps} />
         </SectionFade>

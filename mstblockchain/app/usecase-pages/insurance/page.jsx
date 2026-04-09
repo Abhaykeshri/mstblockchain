@@ -2,70 +2,69 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { CheckCircle2, ShieldCheck, Database, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, Database, ArrowRight, Home } from 'lucide-react';
 import { useState } from "react";
-import FormModal from "@/app/components/form/FormModal";
+// import FormModal from "@/app/components/form/FormModal";
 
 const featureItems = [
   {
-    title: 'Complete Traceability',
-    description: 'Track every movement across suppliers, warehouses, and delivery checkpoints in one immutable stream.',
-    icon: CheckCircle2
-  },
-  {
-    title: 'Anti-Counterfeit Protection',
-    description: 'Verify authenticity with tamper-proof provenance and reduce the risk of fake goods entering the chain.',
+    title: 'Automatic Claim Triggering',
+    description: 'Define conditions in the smart contract. When verified events occur — delay, weather event, medical procedure — the payout triggers automatically with no forms required.',
     icon: ShieldCheck
   },
   {
-    title: 'Shared Source of Truth',
-    description: 'Give every stakeholder the same trusted ledger view for cleaner audits and faster decisions.',
-    icon: Database
+    title: 'Full Policy Transparency',
+    description: 'Policy terms are written in smart contract code that is publicly verifiable. Policyholders see exactly what conditions trigger their coverage — no fine print surprises.',
+    icon: CheckCircle2
+  },
+  {
+    title: 'Faster Payouts',
+    description: 'Automated claims eliminate weeks of manual processing. Eligible policyholders receive payouts in hours instead of weeks — dramatically improving trust and satisfaction.',
+    icon: Home
   }
 ];
 
 const proofItems = [
   {
-    title: 'National Car Manufacturer',
-    description: 'Vehicle parts are tracked from production to delivery with a verified history for every batch.',
+    title: 'Flight Delay Insurance',
+    description: 'Policies that automatically pay out when verified flight delay data meets the defined threshold — no claims process required from the policyholder.',
     image: '/img3.jpeg',
     alt: 'National car manufacturer supply chain'
   },
   {
-    title: 'Express Post & Shipping',
-    description: 'Package custody and transfer events are recorded to improve transparency and dispute handling.',
+    title: 'Microinsurance for Low-Income Markets',
+    description: 'Low-premium, high-frequency insurance products made economically viable by smart contract automation and MST"s low transaction fees.',
     image: '/1.png',
     alt: 'Express shipping supply chain'
   },
   {
-    title: 'Food & Agriculture Tracking',
-    description: 'Farm-to-shelf visibility helps reduce spoilage, fraud, and recall time with trusted provenance.',
-    image: '/hero-visual-1.svg',
+    title: 'Parametric Weather Insurance',
+    description: 'Agricultural and business insurance that pays automatically when weather oracle data crosses defined thresholds — protecting farmers and businesses from crop loss.',
     alt: 'Food and agriculture supply chain'
   }
 ];
 
 const creatorSteps = [
-  'Register the product batch and compliance metadata.',
-  'Create a unique identity for each lot or serialized item.',
-  'Attach transfer events at every custody change.',
-  'Sync certifications, inspections, and quality records.',
-  'Publish final verified status for downstream partners.'
+  'Insurance policy terms and trigger conditions are written into an MST smart contract',
+  'Policy is issued to the customer with all terms transparently recorded on-chain',
+  'Claim event occurs — data from oracles or verified sources is submitted to the smart contract',
+  'Smart contract evaluates the data against policy conditions automatically',
+  'If conditions are met, payout is triggered and executed automatically; full record logged on-chain'
 ];
 
 const verifierSteps = [
-  'Scan the product code or shipment identifier.',
-  'Open the full provenance and custody timeline.',
-  'Validate certificates, handling, and movement records.',
-  'Detect anomalies, gaps, or suspicious updates.',
-  'Approve, flag, or trigger the next action instantly.'
+  'Policyholder purchases insurance — policy terms and coverage immediately visible on-chain',
+  'Triggering event occurs — policyholder or oracle data submits the event to the smart contract',
+'Smart contract evaluates eligibility in real time with no manual review required',
+  'Policyholder receives instant notification of outcome — approved or details of why not met',
+  'Payout credited automatically if approved; complete audit trail available for any review'
 ];
 
 const stats = [
-  { label: 'Real-Time Visibility', value: '24/7' },
-  { label: '100% Tamper-Proof Records', value: 'Immutable' },
-  { label: 'Zero Blind Spots', value: 'Unified' },
-  { label: 'Instant Anomaly Detection', value: 'Alerts' }
+  { label: 'Auto', value: 'Claim Triggering' },
+  { label: 'Hours', value: 'Payout Speed' },
+  { label: 'Zero', value: 'Paperwork Required' },
+  { label: 'Full%', value: 'Policy Transparency' }
 ];
 
 function SectionFade({ children, className = '' }) {
@@ -159,15 +158,12 @@ const [formType, setFormType] = useState("General Enquiry");
             <div className="relative inline-block">
               <h1 className="font-[var(--font-space-grotesk)] text-4xl font-extrabold tracking-[-0.06em] text-black sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
                 <span className="block">
-                  Supply Chain
-                </span>
-                <span className="mt-2 block text-[#ff2d2d]">
-                  Transparency
+                Insurance Automation
                 </span>
               </h1>
             </div>
             <p className="max-w-2xl text-base leading-relaxed text-black/68 sm:text-lg">
-              Know exactly where products are, where they came from, and who handled them — with a modern blockchain layer built for trust, traceability, and operational clarity.
+              Smart contracts replace slow manual claims. When conditions are met, payment happens automatically.
             </p>
           </div>
 
@@ -231,10 +227,10 @@ const [formType, setFormType] = useState("General Enquiry");
       <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-10 px-6 py-16 md:px-16 lg:grid-cols-2 lg:items-center">
         <SectionFade className="space-y-5">
           <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">
-            What is Blockchain Supply Chain Transparency?
+         What is Blockchain Insurance Automation?
           </h2>
           <p className="max-w-2xl text-base leading-8 text-black/70">
-            Modern supply chains move products through factories, warehouses, shipping routes, and retailers. Blockchain creates a shared, verifiable trail that makes every handoff visible, reducing ambiguity while improving trust, compliance, and coordination.
+           Blockchain insurance automation means writing your policy conditions into a smart contract — self-executing code on the blockchain that triggers claims automatically when defined conditions are met. Imagine buying flight delay insurance. Instead of filing a claim, uploading boarding passes, and waiting two weeks for a decision, the smart contract monitors your flight data. If your flight is delayed by more than two hours, it automatically releases your payout. No forms. No waiting. No dispute.
           </p>
         </SectionFade>
 
@@ -272,15 +268,15 @@ const [formType, setFormType] = useState("General Enquiry");
       <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-10 px-6 py-16 md:px-16 lg:grid-cols-2 lg:items-center">
         <SectionFade className="space-y-5 border-l-2 border-[#ff2d2d] pl-5 md:pl-6">
           <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">
-            The Problem: Supply Chains are Full of Blind Spots
+            The Problem: Insurance Claims are Slow, Manual, and Frustrating
           </h2>
           <p className="text-base leading-8 text-black/70">
-            Tracking failures, fraud, and inefficiencies are common when data is siloed across multiple systems. Leaders often lack a single source of truth for audits, recalls, and exception handling.
+          Most people who have filed an insurance claim know the frustration — gathering documents, filling long forms, waiting for assessment, arguing with adjusters, and still not knowing when or whether they will be paid. This process is expensive for insurers to run and genuinely painful for customers to navigate. It erodes trust in insurance as a concept, and leaves many legitimate claimants without timely support.
           </p>
 
           <h3 className="pt-2 font-[var(--font-space-grotesk)] text-2xl font-bold text-black">How MST Fixes It</h3>
           <p className="text-base leading-8 text-black/70">
-            MST turns supply chain events into immutable on-chain records. Every transfer, inspection, and certification update becomes instantly auditable and accessible to authorized participants in real time.
+          An insurance policy on MST is built as a smart contract with clearly defined trigger conditions written into the code. When an event occurs — a flight delay, a weather threshold, a verified medical procedure — the trigger condition is checked against on-chain or oracle-sourced data. If conditions are met, the payout executes automatically. The policyholder can track every stage in real time and always knows exactly where their claim stands.
           </p>
         </SectionFade>
 
@@ -299,10 +295,11 @@ const [formType, setFormType] = useState("General Enquiry");
 
       {/* PROOFS */}
       <section className="mx-auto w-full max-w-[90rem] px-6 py-16 md:px-16">
+        
         <SectionFade className="space-y-3">
           <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">Proofs of Concept</h2>
           <p className="max-w-2xl text-base leading-8 text-black/68">
-            Practical pilots that show how blockchain supply chain transparency improves traceability, trust, and operational performance.
+            Real-world examples showing how this use case works in practice across different industries and regions.
           </p>
         </SectionFade>
 
@@ -322,14 +319,47 @@ const [formType, setFormType] = useState("General Enquiry");
       </section>
 
       {/* STEPS */}
-      <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-6 px-6 py-16 md:px-16 lg:grid-cols-2">
-        <SectionFade>
-          <StepFlow title="Creator / Issuer Flow" steps={creatorSteps} />
-        </SectionFade>
-        <SectionFade>
-          <StepFlow title="User / Verifier Flow" steps={verifierSteps} accent />
-        </SectionFade>
-      </section>
+          <section className='mx-auto text-center w-full max-w-[90rem] px-6 py-16 md:px-16'>
+                  <h3 className="pt-2 font-[var(--font-space-grotesk)] text-2xl font-bold text-black">See How It Works Step by Step</h3>
+        <p className="text-base leading-8 text-black/70">
+         Two simple flows — one for whoever is issuing or creating, and one for whoever is verifying or using. Both powered by MST blockchain behind the scenes.
+          </p>
+
+<section
+  className="mx-auto w-full max-w-[90rem] px-2 py-10 sm:px-6 sm:py-16 md:px-16
+    grid grid-cols-1 gap-6
+    lg:grid-cols-2 lg:gap-6
+    min-h-0"
+>
+
+  {/* LEFT */}
+
+  <SectionFade className="h-full min-h-0 flex flex-col">
+    <div className="flex flex-col h-full min-h-0 flex-1 bg-white rounded-xl overflow-hidden">
+      {/* Header (fixed) */}
+      <div className="p-4 border-b font-semibold">Creator / Issuer Flow</div>
+      {/* Scrollable content */}
+      <div className="flex-1 w-full min-h-0 overflow-y-auto p-4">
+        <StepFlow steps={creatorSteps} />
+      </div>
+    </div>
+  </SectionFade>
+
+  {/* RIGHT */}
+
+  <SectionFade className="h-full min-h-0 flex flex-col">
+    <div className="flex flex-col h-full min-h-0 flex-1 bg-white rounded-xl overflow-hidden">
+      {/* Header (fixed) */}
+      <div className="p-4 border-b font-semibold">User / Verifier Flow</div>
+      {/* Scrollable content */}
+      <div className="flex-1 w-full min-h-0 overflow-y-auto p-4">
+        <StepFlow steps={verifierSteps} accent />
+      </div>
+    </div>
+  </SectionFade>
+
+</section>
+          </section>
 
       {/* STATS */}
       <section className="mx-auto w-full max-w-[90rem] px-6 pb-20 pt-6 md:px-16">
@@ -339,8 +369,8 @@ const [formType, setFormType] = useState("General Enquiry");
             <div className="relative grid grid-cols-1 gap-4 text-center sm:grid-cols-2 lg:grid-cols-4">
               {stats.map((stat) => (
                 <div key={stat.label} className="rounded-2xl border border-white/10 bg-white/5 px-5 py-5 backdrop-blur-sm">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-white/55">{stat.label}</p>
-                  <p className="mt-2 font-[var(--font-space-grotesk)] text-2xl font-bold tracking-[-0.03em] text-white sm:text-3xl">
+                  <p className="mt-2 font-[var(--font-space-grotesk)] text-2xl font-bold tracking-[-0.03em] text-white sm:text-3xl">{stat.label}</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-white/55">
                     {stat.value}
                   </p>
                 </div>
@@ -350,11 +380,11 @@ const [formType, setFormType] = useState("General Enquiry");
         </SectionFade>
       </section>
 
-      <FormModal 
+      {/* <FormModal 
   open={openForm} 
   setOpen={setOpenForm} 
   formType={formType}
-/>
+/> */}
     </main>
   );
 }

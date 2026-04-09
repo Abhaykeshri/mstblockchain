@@ -2,70 +2,70 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { CheckCircle2, ShieldCheck, Database, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, Database, ArrowRight, Home } from 'lucide-react';
 import { useState } from "react";
-import FormModal from "@/app/components/form/FormModal";
+// import FormModal from "@/app/components/form/FormModal";
 
 const featureItems = [
   {
-    title: 'Complete Traceability',
-    description: 'Track every movement across suppliers, warehouses, and delivery checkpoints in one immutable stream.',
-    icon: CheckCircle2
-  },
-  {
-    title: 'Anti-Counterfeit Protection',
-    description: 'Verify authenticity with tamper-proof provenance and reduce the risk of fake goods entering the chain.',
+    title: 'No More Duplicate Titles',
+    description: 'Blockchain can only accept ownership records consistent with the existing chain. Fraudulent duplicate titles are rejected at the system level.',
     icon: ShieldCheck
   },
   {
-    title: 'Shared Source of Truth',
-    description: 'Give every stakeholder the same trusted ledger view for cleaner audits and faster decisions.',
-    icon: Database
+    title: 'Instant Ownership Verification',
+    description: 'Any buyer, bank, or legal party can verify current ownership and the complete ownership history of any property in seconds.',
+    icon: CheckCircle2
+  },
+  {
+    title: 'Permanent Historical Record',
+    description: 'Every ownership transfer is permanently recorded and linked to the previous record. The complete provenance of a property is always accessible and verifiable.',
+    icon: Home
   }
 ];
 
 const proofItems = [
   {
-    title: 'National Car Manufacturer',
-    description: 'Vehicle parts are tracked from production to delivery with a verified history for every batch.',
+    title: 'Land Title Registration',
+    description: 'Government land titles secured with blockchain hashes — buyers and legal firms verify authenticity instantly without relying on paper documents.',
     image: '/img3.jpeg',
     alt: 'National car manufacturer supply chain'
   },
   {
-    title: 'Express Post & Shipping',
-    description: 'Package custody and transfer events are recorded to improve transparency and dispute handling.',
+    title: 'Tanzania Revenue Authority',
+    description: 'TRA-issued tax and property documents secured with immutable blockchain records — eliminating counterfeiting and misuse.',
     image: '/1.png',
     alt: 'Express shipping supply chain'
   },
   {
-    title: 'Food & Agriculture Tracking',
-    description: 'Farm-to-shelf visibility helps reduce spoilage, fraud, and recall time with trusted provenance.',
+    title: 'Municipal Corporation Certificates',
+    description: 'Civic, compliance, and operational certificates from municipal authorities anchored on MST for instant verification and fraud prevention.',
     image: '/hero-visual-1.svg',
     alt: 'Food and agriculture supply chain'
   }
 ];
 
 const creatorSteps = [
-  'Register the product batch and compliance metadata.',
-  'Create a unique identity for each lot or serialized item.',
-  'Attach transfer events at every custody change.',
-  'Sync certifications, inspections, and quality records.',
-  'Publish final verified status for downstream partners.'
+  'Land parcel is mapped and registered with a verified digital record on MST blockchain',
+  'Ownership record is anchored with a unique hash linked to the registered owner',
+  'Any ownership transfer is recorded on-chain with authorized government or legal validation',
+  'WASMify connects existing government registry databases to the blockchain verification layer',
+  'All updates, transfers, and access events are permanently logged with full accountability'
 ];
 
 const verifierSteps = [
-  'Scan the product code or shipment identifier.',
-  'Open the full provenance and custody timeline.',
-  'Validate certificates, handling, and movement records.',
-  'Detect anomalies, gaps, or suspicious updates.',
-  'Approve, flag, or trigger the next action instantly.'
+  'Buyer, bank, or legal firm scans the QR code on the property title document   ',
+  'They are taken to a results page showing current owner and full ownership history',
+  'They verify the document appearance against the original blockchain record',
+  'They can independently check the unique hash on the MST blockchain directly',
+  'The event log shows every ownership change, update, and verification in chronological order'
 ];
 
 const stats = [
-  { label: 'Real-Time Visibility', value: '24/7' },
-  { label: '100% Tamper-Proof Records', value: 'Immutable' },
-  { label: 'Zero Blind Spots', value: 'Unified' },
-  { label: 'Instant Anomaly Detection', value: 'Alerts' }
+  { label: 'Zero', value: 'Duplicate Titles Possible' },
+  { label: 'Instant', value: 'Ownership Verification' },
+  { label: 'Full', value: 'Historical Record' },
+  { label: '100%', value: 'Tamper-Proof ' }
 ];
 
 function SectionFade({ children, className = '' }) {
@@ -159,15 +159,12 @@ const [formType, setFormType] = useState("General Enquiry");
             <div className="relative inline-block">
               <h1 className="font-[var(--font-space-grotesk)] text-4xl font-extrabold tracking-[-0.06em] text-black sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
                 <span className="block">
-                  Supply Chain
-                </span>
-                <span className="mt-2 block text-[#ff2d2d]">
-                  Transparency
+                Land Records
                 </span>
               </h1>
             </div>
             <p className="max-w-2xl text-base leading-relaxed text-black/68 sm:text-lg">
-              Know exactly where products are, where they came from, and who handled them — with a modern blockchain layer built for trust, traceability, and operational clarity.
+              If it is on the blockchain, it cannot be forged, duplicated, or disputed.
             </p>
           </div>
 
@@ -231,10 +228,10 @@ const [formType, setFormType] = useState("General Enquiry");
       <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-10 px-6 py-16 md:px-16 lg:grid-cols-2 lg:items-center">
         <SectionFade className="space-y-5">
           <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">
-            What is Blockchain Supply Chain Transparency?
+         What are Blockchain Land Records?
           </h2>
           <p className="max-w-2xl text-base leading-8 text-black/70">
-            Modern supply chains move products through factories, warehouses, shipping routes, and retailers. Blockchain creates a shared, verifiable trail that makes every handoff visible, reducing ambiguity while improving trust, compliance, and coordination.
+           Blockchain land records work exactly like a traditional land registry — except that the records are stored permanently on the blockchain and cannot be altered, duplicated, or destroyed. When a property is registered on MST, the ownership record is locked with a unique digital fingerprint. Transfers of ownership create new records linked to the original. Buyers, governments, legal firms, and banks can verify the current and historical ownership of any property instantly — without relying on paper documents or a single centralized government database.
           </p>
         </SectionFade>
 
@@ -272,15 +269,15 @@ const [formType, setFormType] = useState("General Enquiry");
       <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-10 px-6 py-16 md:px-16 lg:grid-cols-2 lg:items-center">
         <SectionFade className="space-y-5 border-l-2 border-[#ff2d2d] pl-5 md:pl-6">
           <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">
-            The Problem: Supply Chains are Full of Blind Spots
+           The Problem: Land Disputes and Title Fraud are Endemic
           </h2>
           <p className="text-base leading-8 text-black/70">
-            Tracking failures, fraud, and inefficiencies are common when data is siloed across multiple systems. Leaders often lack a single source of truth for audits, recalls, and exception handling.
+          In many regions across the world, land ownership records are still maintained on paper or in poorly secured digital systems. This creates enormous opportunities for fraud — duplicate titles, forged deeds, and deliberate ownership disputes. Legal battles over land can drag on for years and cost families their savings. In many cases, the fraudulent record is indistinguishable from the genuine one because both exist in the same vulnerable system.
           </p>
 
           <h3 className="pt-2 font-[var(--font-space-grotesk)] text-2xl font-bold text-black">How MST Fixes It</h3>
           <p className="text-base leading-8 text-black/70">
-            MST turns supply chain events into immutable on-chain records. Every transfer, inspection, and certification update becomes instantly auditable and accessible to authorized participants in real time.
+          MST anchors land ownership records on the blockchain with a unique hash. Whenever ownership transfers, the new ownership is recorded in a way that links directly to the previous record — creating an unbroken chain of provenance. Anyone can verify the current owner and the complete ownership history instantly. Duplicate titles cannot exist because the blockchain only accepts records that are consistent with the existing chain. Fraud becomes structurally impossible.
           </p>
         </SectionFade>
 
@@ -299,10 +296,11 @@ const [formType, setFormType] = useState("General Enquiry");
 
       {/* PROOFS */}
       <section className="mx-auto w-full max-w-[90rem] px-6 py-16 md:px-16">
+        
         <SectionFade className="space-y-3">
           <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">Proofs of Concept</h2>
           <p className="max-w-2xl text-base leading-8 text-black/68">
-            Practical pilots that show how blockchain supply chain transparency improves traceability, trust, and operational performance.
+            Real-world examples showing how this use case works in practice across different industries and regions.
           </p>
         </SectionFade>
 
@@ -322,14 +320,47 @@ const [formType, setFormType] = useState("General Enquiry");
       </section>
 
       {/* STEPS */}
-      <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-6 px-6 py-16 md:px-16 lg:grid-cols-2">
-        <SectionFade>
-          <StepFlow title="Creator / Issuer Flow" steps={creatorSteps} />
-        </SectionFade>
-        <SectionFade>
-          <StepFlow title="User / Verifier Flow" steps={verifierSteps} accent />
-        </SectionFade>
-      </section>
+          <section className='mx-auto text-center w-full max-w-[90rem] px-6 py-16 md:px-16'>
+                  <h3 className="pt-2 font-[var(--font-space-grotesk)] text-2xl font-bold text-black">See How It Works Step by Step</h3>
+        <p className="text-base leading-8 text-black/70">
+         Two simple flows — one for whoever is issuing or creating, and one for whoever is verifying or using. Both powered by MST blockchain behind the scenes.
+          </p>
+
+<section
+  className="mx-auto w-full max-w-[90rem] px-2 py-10 sm:px-6 sm:py-16 md:px-16
+    grid grid-cols-1 gap-6
+    lg:grid-cols-2 lg:gap-6
+    min-h-0"
+>
+
+  {/* LEFT */}
+
+  <SectionFade className="h-full min-h-0 flex flex-col">
+    <div className="flex flex-col h-full min-h-0 flex-1 bg-white rounded-xl overflow-hidden">
+      {/* Header (fixed) */}
+      <div className="p-4 border-b font-semibold">Creator / Issuer Flow</div>
+      {/* Scrollable content */}
+      <div className="flex-1 w-full min-h-0 overflow-y-auto p-4">
+        <StepFlow steps={creatorSteps} />
+      </div>
+    </div>
+  </SectionFade>
+
+  {/* RIGHT */}
+
+  <SectionFade className="h-full min-h-0 flex flex-col">
+    <div className="flex flex-col h-full min-h-0 flex-1 bg-white rounded-xl overflow-hidden">
+      {/* Header (fixed) */}
+      <div className="p-4 border-b font-semibold">User / Verifier Flow</div>
+      {/* Scrollable content */}
+      <div className="flex-1 w-full min-h-0 overflow-y-auto p-4">
+        <StepFlow steps={verifierSteps} accent />
+      </div>
+    </div>
+  </SectionFade>
+
+</section>
+          </section>
 
       {/* STATS */}
       <section className="mx-auto w-full max-w-[90rem] px-6 pb-20 pt-6 md:px-16">
@@ -339,8 +370,8 @@ const [formType, setFormType] = useState("General Enquiry");
             <div className="relative grid grid-cols-1 gap-4 text-center sm:grid-cols-2 lg:grid-cols-4">
               {stats.map((stat) => (
                 <div key={stat.label} className="rounded-2xl border border-white/10 bg-white/5 px-5 py-5 backdrop-blur-sm">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-white/55">{stat.label}</p>
-                  <p className="mt-2 font-[var(--font-space-grotesk)] text-2xl font-bold tracking-[-0.03em] text-white sm:text-3xl">
+                  <p className="mt-2 font-[var(--font-space-grotesk)] text-2xl font-bold tracking-[-0.03em] text-white sm:text-3xl">{stat.label}</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-white/55">
                     {stat.value}
                   </p>
                 </div>
@@ -350,11 +381,11 @@ const [formType, setFormType] = useState("General Enquiry");
         </SectionFade>
       </section>
 
-      <FormModal 
+      {/* <FormModal 
   open={openForm} 
   setOpen={setOpenForm} 
   formType={formType}
-/>
+/> */}
     </main>
   );
 }

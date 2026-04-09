@@ -8,64 +8,64 @@ import FormModal from "@/app/components/form/FormModal";
 
 const featureItems = [
   {
-    title: 'Complete Traceability',
-    description: 'Track every movement across suppliers, warehouses, and delivery checkpoints in one immutable stream.',
+    title: 'Real Commodity Backing',
+    description: 'Every token is backed by a verified physical commodity reserve. On-chain records provide full transparency into total issuance, reserves, and every movement.',
     icon: CheckCircle2
   },
   {
-    title: 'Anti-Counterfeit Protection',
-    description: 'Verify authenticity with tamper-proof provenance and reduce the risk of fake goods entering the chain.',
+    title: 'Fractional Ownership for Everyone',
+    description: 'Buy as little or as much as you want. Tokenization removes minimum investment barriers — anyone can own a fraction of a commodity asset.',
     icon: ShieldCheck
   },
   {
-    title: 'Shared Source of Truth',
-    description: 'Give every stakeholder the same trusted ledger view for cleaner audits and faster decisions.',
+    title: 'nstant Transfer and Settlement',
+    description: 'Transfer commodity-backed tokens to anyone, anywhere, in seconds. No dealers, no shipping, no storage arrangements — just fast, transparent digital movement.',
     icon: Database
   }
 ];
 
 const proofItems = [
   {
-    title: 'National Car Manufacturer',
-    description: 'Vehicle parts are tracked from production to delivery with a verified history for every batch.',
+    title: 'Digital Gold Savings Product',
+    description: 'Tokenized gold that users buy in any amount, store in a digital wallet, and redeem or transfer without physical custody requirements.',
     image: '/img3.jpeg',
-    alt: 'National car manufacturer supply chain'
+    alt: 'Digital Gold Savings Products'
   },
   {
-    title: 'Express Post & Shipping',
-    description: 'Package custody and transfer events are recorded to improve transparency and dispute handling.',
+    title: 'Commodity-Backed Collateral',
+    description: 'Commodity tokens used as collateral in DeFi applications — unlocking financial utility from physical asset holdings.',
     image: '/1.png',
-    alt: 'Express shipping supply chain'
+    alt: 'Commodity-Backed Collaterals'
   },
   {
-    title: 'Food & Agriculture Tracking',
-    description: 'Farm-to-shelf visibility helps reduce spoilage, fraud, and recall time with trusted provenance.',
+    title: 'Cross-Border Commodity Trading',
+    description: 'Commodity tokens transferred instantly across borders — eliminating the friction of international physical commodity markets.',
     image: '/hero-visual-1.svg',
-    alt: 'Food and agriculture supply chain'
+    alt: 'Cross-Border Commodity Tradings'
   }
 ];
 
 const creatorSteps = [
-  'Register the product batch and compliance metadata.',
-  'Create a unique identity for each lot or serialized item.',
-  'Attach transfer events at every custody change.',
-  'Sync certifications, inspections, and quality records.',
-  'Publish final verified status for downstream partners.'
+  'A verified custodian establishes and audits a physical commodity reserve.',
+  'Equivalent digital tokens are issued on MST blockchain — one token per defined unit of commodity.',
+  'Token issuance and reserve details are permanently recorded on-chain for public auditability.',
+  'Users buy, hold, and transfer tokens through a simple digital wallet interface.',
+  'Redemption requests are processed against the physical reserve with on-chain confirmation.'
 ];
 
 const verifierSteps = [
-  'Scan the product code or shipment identifier.',
-  'Open the full provenance and custody timeline.',
-  'Validate certificates, handling, and movement records.',
-  'Detect anomalies, gaps, or suspicious updates.',
-  'Approve, flag, or trigger the next action instantly.'
+  'User purchases commodity tokens through the platform in any quantity.',
+  'Tokens appear in their digital wallet immediately with reserve backing confirmation.',
+  'User can transfer tokens to any other wallet instantly at any time.',
+  'User views on-chain reserve audit records to verify their tokens are fully backed.',
+  'Redemption request submitted on-chain — physical commodity dispatched from verified reserve.'
 ];
 
 const stats = [
-  { label: 'Real-Time Visibility', value: '24/7' },
-  { label: '100% Tamper-Proof Records', value: 'Immutable' },
-  { label: 'Zero Blind Spots', value: 'Unified' },
-  { label: 'Instant Anomaly Detection', value: 'Alerts' }
+  { label: 'Physical Backing', value: '100%' },
+  { label: 'Transfer Speed', value: 'Instant' },
+  { label: 'Reserve Transparency', value: 'Full' },
+  { label: 'Investment Size', value: 'Any' }
 ];
 
 function SectionFade({ children, className = '' }) {
@@ -103,7 +103,7 @@ function ProofCard({ title, description, image, alt }) {
     <motion.article
       whileHover={{ y: -6 }}
       transition={{ duration: 0.22 }}
-      className="group overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_14px_32px_rgba(0,0,0,0.06)] transition-all duration-300 hover:shadow-[0_18px_42px_rgba(255,45,45,0.12)]"
+      className="group overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_14px_32px_rgba(0,0,0,0.06)] transition-all duration-300 hover:shadow-[0_18px_42px_rgba(255,45,45,0.12)] min-h-[370px] flex flex-col"
     >
       <div className="relative h-[170px] overflow-hidden bg-[linear-gradient(135deg,rgba(255,45,45,0.16),rgba(0,0,0,0.04))]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,45,45,0.25),transparent_65%)]" />
@@ -115,7 +115,7 @@ function ProofCard({ title, description, image, alt }) {
           className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
         />
       </div>
-      <div className="p-5">
+      <div className="p-5 flex flex-col flex-1">
         <h3 className="font-[var(--font-space-grotesk)] text-lg font-bold text-black">{title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-black/68">{description}</p>
         <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#ff2d2d] transition-transform duration-300 group-hover:translate-x-1">
@@ -128,7 +128,7 @@ function ProofCard({ title, description, image, alt }) {
 
 function StepFlow({ title, steps, accent = false }) {
   return (
-    <div className="rounded-2xl border border-black/10 bg-white p-6 shadow-[0_14px_34px_rgba(0,0,0,0.05)]">
+    <div className="rounded-2xl border border-black/10 bg-white p-6 shadow-[0_14px_34px_rgba(0,0,0,0.05)] min-h-[340px] flex flex-col h-full">
       <h3 className="font-[var(--font-space-grotesk)] text-2xl font-bold tracking-[-0.02em] text-black">{title}</h3>
       <div className="mt-6 space-y-4">
         {steps.map((step, index) => (
@@ -159,54 +159,18 @@ const [formType, setFormType] = useState("General Enquiry");
             <div className="relative inline-block">
               <h1 className="font-[var(--font-space-grotesk)] text-4xl font-extrabold tracking-[-0.06em] text-black sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
                 <span className="block">
-                  Supply Chain
+                  Gold & Commodity
                 </span>
                 <span className="mt-2 block text-[#ff2d2d]">
-                  Transparency
+                  Tokenization
                 </span>
               </h1>
             </div>
             <p className="max-w-2xl text-base leading-relaxed text-black/68 sm:text-lg">
-              Know exactly where products are, where they came from, and who handled them — with a modern blockchain layer built for trust, traceability, and operational clarity.
+              The trust of gold. The accessibility of a digital wallet. The transparency of the blockchain.
             </p>
           </div>
-
-          {/* Responsive Button Group */}
-          <div className="flex flex-col gap-3 sm:flex-row sm:justify-start sm:items-center mt-6 mb-8 w-full">
-
-                      {/* CONTACT */}
-                      <button
-                        onClick={() => {
-                          setFormType("General Enquiry");
-                          setOpenForm(true);
-                        }}
-                        className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#ff2d2d] text-white font-semibold transition-all duration-200 transform hover:scale-105"
-                      >
-                        Contact Us / Enquire
-                      </button>
-
-                      {/* DEMO */}
-                      <button
-                        onClick={() => {
-                          setFormType("Book a Demo");
-                          setOpenForm(true);
-                        }}
-                        className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-black/80 border border-white/20 text-white font-semibold hover:bg-[#ff2d2d]"
-                      >
-                        Book a Demo
-                      </button>
-
-                      {/* EXPERT */}
-                      <button
-                        onClick={() => {
-                          setFormType("Talk to Expert");
-                          setOpenForm(true);
-                        }}
-                        className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-black/80 border border-white/20 text-white font-semibold hover:bg-[#ff2d2d]"
-                      >
-                        Talk to an Expert
-                      </button>
-            </div>
+ 
 
           <div className="overflow-hidden rounded-3xl bg-black shadow-none">
             <div className="relative flex h-[280px] items-center justify-center overflow-hidden rounded-3xl bg-[linear-gradient(135deg,rgba(255,45,45,0.22),rgba(0,0,0,0.7))] sm:h-[380px]">
@@ -231,10 +195,10 @@ const [formType, setFormType] = useState("General Enquiry");
       <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-10 px-6 py-16 md:px-16 lg:grid-cols-2 lg:items-center">
         <SectionFade className="space-y-5">
           <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">
-            What is Blockchain Supply Chain Transparency?
+           What is Commodity Tokenization?
           </h2>
           <p className="max-w-2xl text-base leading-8 text-black/70">
-            Modern supply chains move products through factories, warehouses, shipping routes, and retailers. Blockchain creates a shared, verifiable trail that makes every handoff visible, reducing ambiguity while improving trust, compliance, and coordination.
+           Commodity tokenization simply means representing a real physical asset — like gold, silver, or oil — as digital tokens on the blockchain. Each token represents a verified amount of the underlying commodity held in a secure physical reserve. You can own, transfer, or use these tokens exactly like cash in a wallet. You can own a fraction of a gold bar for the price of a cup of coffee. Every token is backed by real commodity reserves, and the blockchain records every issuance, transfer, and redemption permanently.
           </p>
         </SectionFade>
 
@@ -272,15 +236,15 @@ const [formType, setFormType] = useState("General Enquiry");
       <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-10 px-6 py-16 md:px-16 lg:grid-cols-2 lg:items-center">
         <SectionFade className="space-y-5 border-l-2 border-[#ff2d2d] pl-5 md:pl-6">
           <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">
-            The Problem: Supply Chains are Full of Blind Spots
+            The Problem: Commodity Ownership is Inaccessible to Most People
           </h2>
           <p className="text-base leading-8 text-black/70">
-            Tracking failures, fraud, and inefficiencies are common when data is siloed across multiple systems. Leaders often lack a single source of truth for audits, recalls, and exception handling.
+            Buying physical gold requires finding a reputable dealer, paying a premium, arranging secure storage, and accepting that selling it will be slow and involve further fees. Most commodity markets are built for institutional investors with large capital. For everyday people, accessing the value-preserving properties of gold and other commodities is either impractical or entirely impossible.
           </p>
 
-          <h3 className="pt-2 font-[var(--font-space-grotesk)] text-2xl font-bold text-black">How MST Fixes It</h3>
+          <h3 className="pt-2 font-[var(--font-space-grotesk)] text-2xl font-bold text-black">How MST Fixes It </h3>
           <p className="text-base leading-8 text-black/70">
-            MST turns supply chain events into immutable on-chain records. Every transfer, inspection, and certification update becomes instantly auditable and accessible to authorized participants in real time.
+           On MST Blockchain, a verified custodian holds the physical commodity in a secure, auditable reserve. Equivalent digital tokens are issued on-chain — each one representing a real, redeemable amount of the commodity. Users can buy, hold, transfer, or redeem tokens through a simple digital interface. Every token issuance, reserve audit, and transfer is permanently recorded on the blockchain — giving users the same transparency they would have if they could see inside the vault themselves.
           </p>
         </SectionFade>
 
@@ -302,7 +266,7 @@ const [formType, setFormType] = useState("General Enquiry");
         <SectionFade className="space-y-3">
           <h2 className="font-[var(--font-space-grotesk)] text-3xl font-bold tracking-[-0.03em] text-black sm:text-4xl">Proofs of Concept</h2>
           <p className="max-w-2xl text-base leading-8 text-black/68">
-            Practical pilots that show how blockchain supply chain transparency improves traceability, trust, and operational performance.
+            Real-world examples showing how this use case works in practice across different industries and regions.
           </p>
         </SectionFade>
 
@@ -311,7 +275,7 @@ const [formType, setFormType] = useState("General Enquiry");
           whileInView="visible"
           viewport={{ once: true, amount: 0.18 }}
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
-          className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+          className="mt grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
         >
           {proofItems.map((item) => (
             <motion.div key={item.title} variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }}>
@@ -322,7 +286,7 @@ const [formType, setFormType] = useState("General Enquiry");
       </section>
 
       {/* STEPS */}
-      <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-6 px-6 py-16 md:px-16 lg:grid-cols-2">
+      <section className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-6 px-6 py-16 md:px-16 lg:grid-cols-2 items-stretch">
         <SectionFade>
           <StepFlow title="Creator / Issuer Flow" steps={creatorSteps} />
         </SectionFade>
