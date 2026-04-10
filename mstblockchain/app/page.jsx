@@ -5,6 +5,12 @@ import ExplorerSection from './components/Explorer/Explorersection';
 import HeroSection from './components/hero/HeroSection';
 import WhatIsMST from './components/mst-info/WhatIsMST';
 import MSTInstitutional from './components/MSTInstitutional/MSTInstitutional';
+<<<<<<< Updated upstream
+=======
+import MstBuddy from './components/MstBuddy/BuddyPanel';
+
+// <<<<<<< HEAD
+>>>>>>> Stashed changes
 import ProductShowcase from './components/productSection/ProductShowcase';
 
 import UseCases from './components/UseCases/UseCase';
@@ -28,8 +34,13 @@ export default function HomePage() {
       <StructuralPurity/>
       <MSTEventSection/>
       <MSTInstitutional/>
+<<<<<<< Updated upstream
       <FAQSection/>
+=======
+      <MstBuddy />
+>>>>>>> Stashed changes
 {/* >>>>>>> 464d08086313c4017d87e5cb72665f336717e512 */}
     </main>
   );
 }
+
