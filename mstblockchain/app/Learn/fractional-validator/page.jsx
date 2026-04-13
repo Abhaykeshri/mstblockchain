@@ -110,7 +110,7 @@ export default function SupplyChainPage() {
               animate="visible"
               className="text-left"
             >
-              <h1 className="text-4xl md:text-6xl font-serif font-extrabold tracking-tight leading-tight mb-6">
+              <h1 className="text-4xl md:text-6xl  font-extrabold tracking-tight leading-tight mb-6">
                 Own a Piece of MST <span className="text-red-500">Blockchain</span>
               </h1>
 
@@ -145,7 +145,7 @@ export default function SupplyChainPage() {
 
         {/* 🔴 PROCESS SECTION */}
         <section className="py-24 px-6 max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-serif font-bold tracking-tight mb-16 md:-ml-8">
+          <h2 className="text-3xl md:text-5xl  font-bold tracking-tight mb-16 md:-ml-8">
             From Sign-Up to Rewards in Minutes
           </h2>
 
@@ -268,7 +268,7 @@ export default function SupplyChainPage() {
         {/* 🔴 DASHBOARD SECTION */}
         <section className="py-24 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible">
-            <h2 className="text-3xl md:text-5xl mb-6">
+            <h2 className="text-3xl md:text-5xl mb-6 font-bold">
               Blockchain Rewards Without Technical Barriers
             </h2>
 
@@ -313,7 +313,7 @@ export default function SupplyChainPage() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            className="text-3xl md:text-5xl font-serif font-extrabold tracking-tight mb-6"
+            className="text-3xl md:text-5xl  font-extrabold tracking-tight mb-6"
           >
             Secure Your Fraction Today
           </motion.h2>

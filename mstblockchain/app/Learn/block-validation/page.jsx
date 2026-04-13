@@ -71,7 +71,7 @@ export default function BlockValidationPage() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-red-500"></span>
               </span>
-              <span className="text-[9px] font-black tracking-[0.2em] text-red-300 whitespace-nowrap">Use Cases</span>
+              <span className="text-[9px]  tracking-[0.2em] text-red-300 whitespace-nowrap">Use Cases</span>
             </motion.div>
           </motion.div>
 
@@ -93,7 +93,7 @@ export default function BlockValidationPage() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
               </span>
-              <span className="text-[10px] font-black tracking-[0.2em] text-red-400 whitespace-nowrap">9+ Active Nodes</span>
+              <span className="text-[10px]  tracking-[0.2em] text-red-400 whitespace-nowrap">9+ Active Nodes</span>
             </motion.div>
           </motion.div>
 
@@ -109,7 +109,7 @@ export default function BlockValidationPage() {
               className="absolute bottom-[20%] left-[10%] flex items-center gap-2 opacity-50"
             >
               <span className="relative inline-flex rounded-full h-1 w-1 bg-black"></span>
-              <span className="text-[8px] font-bold tracking-[0.25em] text-red-300 whitespace-nowrap">POSA Consensus</span>
+              <span className="text-[8px]  tracking-[0.25em] text-red-300 whitespace-nowrap">POSA Consensus</span>
             </motion.div>
           </motion.div>
 
@@ -148,8 +148,8 @@ export default function BlockValidationPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-serif font-extrabold leading-[1.08] tracking-tight mb-6">
-                    <span className="text-black">How Blocks Are</span> <br />
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl  font-extrabold leading-[1.08] tracking-tight mb-6">
+                    <span className="text-extrabold text-black">How Blocks Are</span> <br />
                     <span className="relative">
                       <span className="relative z-10 text-red-500">
                         Validated
@@ -214,7 +214,7 @@ export default function BlockValidationPage() {
                 viewport={{ once: true, margin: "-100px" }}
               >
                 <motion.h2
-                  className="text-5xl md:text-6xl font-bold mb-8 tracking-tight text-gray-700"
+                  className="text-5xl md:text-6xl font-extrabold mb-8 tracking-tight text-gray-700"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.6 }}
@@ -418,9 +418,9 @@ export default function BlockValidationPage() {
               viewport={{ once: true, margin: "-100px" }}
             >
               <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-4">
-                <span className="text-gray-700">Why</span>{" "}
+                <span className="text-black">Why</span>{" "}
                 <span className="text-red-500">Validators</span>{" "}
-                <span className="text-gray-700">Participate</span>
+                <span className="text-black">Participate</span>
               </h2>
               <p className="text-gray-400 text-lg max-w-2xl mx-auto">
                 Understanding the incentives behind network security
@@ -497,7 +497,7 @@ export default function BlockValidationPage() {
               viewport={{ once: true, margin: "-100px" }}
             >
               <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-4">
-                <span className="text-gray-700">Trust is Built Into</span> <br />
+                <span className="text-black">Trust is Built Into</span> <br />
                 <span className="text-red-500">Every Block</span>
               </h2>
               <p className="text-gray-400 text-lg max-w-2xl mx-auto mt-4">

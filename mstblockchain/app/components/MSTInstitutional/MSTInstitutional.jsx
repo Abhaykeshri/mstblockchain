@@ -86,13 +86,11 @@ export default function MSTInstitutional() {
 
         {/* LEFT CONTENT */}
         <div className="relative z-10 max-w-xl">
-          <h2 className="text-3xl md:text-5xl font-bold text-black leading-tight mb-6">
-            Institutional <br /> Infrastructure Access
+          <h2 className="text-3xl md:text-5xl font-extrabold text-black leading-tight mb-6">
+             Join Our Validator Program 
           </h2>
 
-          <p className="text-red-500 text-sm md:text-base font-semibold mb-3 tracking-wide uppercase">
-            Join Our Validator Program
-          </p>
+         
 
           <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-8">
             Help secure the most performant network in existence. Stake MST and

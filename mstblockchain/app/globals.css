@@ -1,5 +1,9 @@
 @import "tailwindcss";
-
+@font-face {
+  font-family: "MyFont";
+  src: url('/Lato-Black.ttf');
+  font-display: swap;
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -28,9 +32,8 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans);
+  font-family: "MyFont", var(--font-geist-sans);
 }
-
 .input {
   @apply w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition;
 }

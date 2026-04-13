@@ -392,7 +392,7 @@ export default function Navbar() {
           <div className="pointer-events-none absolute inset-0 bg-black/20" />
 
           <nav className="relative z-20 flex h-16 w-full items-center justify-between px-4 lg:px-8">
-            <Link href="#" className="-ml-1 flex items-center gap-2 group">
+            <Link href="/" className="-ml-1 flex items-center gap-2 group">
               <motion.div whileHover={{ rotate: 180 }} transition={{ duration: 0.4, ease: 'easeInOut' }}>
                 <Image
                   src="/mst-dark-logo.svg"

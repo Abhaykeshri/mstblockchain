@@ -6,28 +6,28 @@ import MSTCard from './MSTCard';
 
 const cards = [
   {
-    title: 'Protocol',
+    title: 'SARAL Protocol',
     description:
-      'MST Protocol is a deterministic ledger architecture built for high-assurance execution, transparent state transitions, and institutional-grade settlement reliability.',
-    ctaText: 'View Specs',
+      'SARAL Protocol is a non-custodial key management solution designed to deliver a seamless user experience—much like OAuth does for Web2. By leveraging Multi-Party Computation (MPC), SARAL empowers developers to securely manage blockchain transactions and Web3 authentication without compromising user control or privacy.',
+    ctaText: 'Explore',
     href: '#',
     icon: Blocks
   },
   {
-    title: 'P1',
+    title: 'WASMify',
     description:
-      'P1 is the core execution lane for low-latency transaction ordering, enabling globally distributed participants to coordinate with consistency and speed.',
-    ctaText: 'Explore P1',
+      'WASMify enables real-world applications and blockchain networks to communicate seamlessly and securely. By leveraging zero-knowledge (ZK) technology, it ensures data privacy and trustless execution—bringing strong guarantees of security to every interaction.',
+    ctaText: 'Explore',
     href: '#',
     icon: Share2,
     isActive: true
   },
   {
-    title: 'P2',
+    title: 'Post-quantum',
     description:
-      'P2 delivers developer infrastructure and modular SDK paths for building secure financial apps, chain-native products, and enterprise automation layers.',
-    ctaText: 'Get the SDK',
+      'Post-quantum cryptography (PQC) protocols are cryptographic algorithms designed to secure digital communications against future, powerful quantum computers, which are expected to break current public-key encryption methods like RSA and ECC. These protocols are primarily being standardized by the National Institute of Standards and Technology (NIST) and are designed to run on classical hardware while resisting quantum-based attacks.',
     href: '#',
+     ctaText: 'Explore',
     icon: Cpu
   }
 ];
@@ -104,13 +104,12 @@ export default function WhatIsMST() {
 
       <div className="relative z-10 mx-auto w-full max-w-[90rem] px-4 py-12 sm:px-5 lg:px-6">
        
-        <h2 className="mt-4 font-[var(--font-space-grotesk)] text-4xl font-extrabold tracking-[-0.03em] text-black sm:text-5xl md:text-6xl">
+        <h2 className="mt-4  text-4xl font-extrabold tracking-[-0.03em] text-black sm:text-5xl md:text-6xl">
           What is MST?
         </h2>
 
         <p className="mt-6 max-w-2xl text-base leading-relaxed text-black/70 md:text-lg">
-          MST Protocol is a decentralized ledger built on the principles of <span className="font-semibold text-accent">mechanical precision</span>, predictable execution, and verifiable trust.
-          It is designed as a resilient foundation for modern financial systems, institution-ready applications, and large-scale digital coordination.
+          MST Blockchain (MSTC) is a public, EVM-compatible Layer 1 blockchain developed by India-based Masterstroke Technosoft, designed for high-speed (2000+ TPS) and low-cost decentralized applications. Using Proof of Stake Authority (PoSA), it focuses on security and efficiency for enterprise, fintech, supply chain, and digital identity use cases
         </p>
 
         <motion.div

@@ -50,8 +50,8 @@ export default function MSTEventSection() {
       
       {/* Header */}
       <div className="max-w-7xl mx-auto relative z-10 mb-12">
-        <h2 className="text-5xl md:text-6xl font-black tracking-tighter leading-none mb-4">
-          ALL <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">EVENTS</span>
+        <h2 className="text-5xl md:text-6xl font-extrabold  leading-none mb-4">
+          ALL <span className="text-red-500">EVENTS</span>
         </h2>
       
       </div>

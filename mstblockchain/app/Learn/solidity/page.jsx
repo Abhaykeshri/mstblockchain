@@ -9,54 +9,60 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
-
 export default function SolidityPage() {
   return (
     <>
-      {/* Animated Orbital Background - fixed behind all content */}
-      <div className="fixed inset-0 w-full h-full pointer-events-none -z-10">
+      {/* 🌌 Animated Orbital Background */}
+      <div className="fixed inset-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
         {/* Orbit 1: Inner Red Ring */}
         <motion.div
           animate={{ rotate: [360, 0] }}
           transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
-          className="absolute top-[0%] -left-[35%] w-[110%] h-[110%] border-[0.5px] border-red-300 rounded-full hidden lg:flex items-center justify-center"
+          className="absolute top-[0%] -left-[35%] w-[110%] h-[110%] border-[0.5px] border-red-300 rounded-full hidden lg:flex items-center justify-center pointer-events-none z-0"
         >
           <div className="absolute w-[6px] h-[6px] bg-red-600 rounded-full bottom-[18%] right-[8%] shadow-[0_0_10px_#ff2d2d]" />
-          {/* Orbital Text Node */}
+          
           <motion.div
             animate={{ rotate: [-360, 0] }}
             transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
             className="absolute top-[10%] left-[10%] flex items-center gap-2"
           >
-            <span className="relative flex h-1.5 w-1.5"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent bg-red-400 opacity-75"></span><span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-accent bg-red-400"></span></span>
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-red-400"></span>
+            </span>
             <span className="text-[9px] font-black tracking-[0.2em] text-red-300 whitespace-nowrap">Use Cases</span>
           </motion.div>
         </motion.div>
+
         {/* Orbit 2: Middle Dashed Ring */}
         <motion.div
           animate={{ rotate: [0, 360] }}
           transition={{ duration: 45, repeat: Infinity, ease: 'linear' }}
-          className="absolute -top-[20%] -left-[60%] w-[140%] h-[140%] border-[0.5px] border-black/10 rounded-full border-dashed hidden lg:flex items-center justify-center"
+          className="absolute -top-[20%] -left-[60%] w-[140%] h-[140%] border-[0.5px] border-black/10 rounded-full border-dashed hidden lg:flex items-center justify-center pointer-events-none z-0"
         >
-          <div className="absolute w-2 h-2 bg-accent bg-red-400 rounded-full top-[12%] shadow-[0_0_15px_#ff2d2d]" />
-          {/* Orbital Text Node */}
+          <div className="absolute w-2 h-2 bg-red-400 rounded-full top-[12%] shadow-[0_0_15px_#ff2d2d]" />
+          
           <motion.div
             animate={{ rotate: [360, 0] }}
             transition={{ duration: 45, repeat: Infinity, ease: 'linear' }}
             className="absolute -left-[5px] top-[50%] -translate-y-1/2 flex items-center gap-2 pr-4 bg-white/40 backdrop-blur-[2px] rounded-full p-1 border border-white/50"
           >
-            <div className="h-px w-8 bg-gradient-to-r from-transparent via-accent to-red-200" />
-            <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent bg-red-400 opacity-75"></span><span className="relative inline-flex rounded-full h-2 w-2 bg-accent bg-red-400"></span></span>
+            <div className="h-px w-8 bg-gradient-to-r from-transparent via-red-400 to-red-200" />
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-400"></span>
+            </span>
             <span className="text-[10px] font-black tracking-[0.2em] text-red-400 whitespace-nowrap">9+ Active Nodes</span>
           </motion.div>
         </motion.div>
+
         {/* Orbit 3: Outer Faint Ring */}
         <motion.div
           animate={{ rotate: [0, 360] }}
           transition={{ duration: 90, repeat: Infinity, ease: 'linear' }}
-          className="absolute -top-[35%] -left-[85%] w-[170%] h-[170%] border-[0.5px] border-black/5 rounded-full hidden lg:flex items-center justify-center"
+          className="absolute -top-[35%] -left-[85%] w-[170%] h-[170%] border-[0.5px] border-black/5 rounded-full hidden lg:flex items-center justify-center pointer-events-none z-0"
         >
-          {/* Orbital Text Node */}
           <motion.div
             animate={{ rotate: [360, 0] }}
             transition={{ duration: 90, repeat: Infinity, ease: 'linear' }}
@@ -66,36 +72,33 @@ export default function SolidityPage() {
             <span className="text-[8px] font-bold tracking-[0.25em] text-red-300 whitespace-nowrap">POSA Consensus</span>
           </motion.div>
         </motion.div>
+
         {/* Small floating local elements */}
         <motion.div
           animate={{ y: [-15, 15, -15], x: [-10, 10, -10], rotate: [0, 90, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-          className="absolute -top-5 -left-10 w-24 h-24 border border-red-500 rounded-full flex items-center justify-center opacity-60"
+          className="absolute -top-5 -left-10 w-24 h-24 border border-red-500 rounded-full flex items-center justify-center opacity-60 z-0"
         >
           <div className="w-16 h-16 border border-red-500/20 rounded-full" />
-          <div className="absolute w-1.5 h-1.5 bg-accent bg-red-400 rounded-full shadow-[0_0_10px_#ff2d2d] top-0" />
+          <div className="absolute w-1.5 h-1.5 bg-red-400 rounded-full shadow-[0_0_10px_#ff2d2d] top-0" />
         </motion.div>
       </div>
 
       <Navbar />
 
-      <main className="bg-white text-gray-900 overflow-hidden relative z-10">
-
+      <main className="text-gray-900 relative z-10">
         {/* 🔴 HERO */}
-        <section className="py-32 px-6 relative">
-          {/* Removed hero background color for a clean look */}
-
-          <div className="relative z-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <section className="py-32 px-6">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <motion.div
               variants={fadeUp}
               initial="hidden"
               animate="visible"
               className="text-left"
             >
-              <h1 className="text-4xl md:text-6xl font-extrabold max-w-8xl">
-                Solidity <span className="text-red-500 " >Powering</span> Smart Contracts on MST Chain
+              <h1 className="text-4xl md:text-6xl font-extrabold">
+                Solidity <span className="text-red-500">Powering</span> Smart Contracts on MST Chain
               </h1>
-
               <p className="text-gray-500 mt-6 text-lg">
                 The programming language that brings decentralized applications to life.
               </p>
@@ -105,7 +108,7 @@ export default function SolidityPage() {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="relative h-80 md:h-[420px] border border-red-500/20 rounded-xl overflow-hidden bg-white"
+              className="relative h-80 md:h-[420px] border border-red-500/20 rounded-xl overflow-hidden bg-white shadow-xl"
             >
               <Image
                 src="/img2.jpg"
@@ -120,10 +123,7 @@ export default function SolidityPage() {
 
         {/* 🔴 ABOUT SOLIDITY */}
         <section className="py-24 px-6 max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl mb-16">
-            The Language of Smart Contracts
-          </h2>
-
+          <h2 className="text-4xl md:text-5xl mb-16">The Language of Smart Contracts</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               "Solidity is the most widely used programming language for smart contracts.",
@@ -135,84 +135,66 @@ export default function SolidityPage() {
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
+                viewport={{ once: true }}
                 className="p-8 rounded-2xl border border-red-600 bg-red-500 hover:bg-red-600 transition"
               >
-                <p className="text-white text-center">{text}</p>
+                <p className="text-white text-center font-medium">{text}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
         {/* 🔴 FEATURES */}
-        <section className="py-24 px-6 relative">
-          <h2 className="text-4xl md:text-5xl mb-16">
-            Familiar, Compatible, and Developer-Friendly
-          </h2>
-
-          <div className="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            {[
-              {
-                title: "EVM Compatible",
-                desc: "Ethereum contracts work on MST Chain.",
-              },
-              {
-                title: "Large Community",
-                desc: "Access tools and open-source support.",
-              },
-              {
-                title: "Secure & Proven",
-                desc: "Used by Ethereum, BNB, Polygon.",
-              },
-              {
-                title: "Rich Libraries",
-                desc: "Use OpenZeppelin and more.",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                className="p-6 border border-red-600 rounded-xl bg-red-500 hover:bg-red-600 transition"
-              >
-                <h4 className="mb-3 font-semibold text-white">{item.title}</h4>
-                <p className="text-red-100 text-sm">{item.desc}</p>
-              </motion.div>
-            ))}
+        <section className="py-24 px-6">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl md:text-5xl mb-16">Familiar, Compatible, and Developer-Friendly</h2>
+            <div className="grid md:grid-cols-4 gap-8">
+              {[
+                { title: "EVM Compatible", desc: "Ethereum contracts work on MST Chain." },
+                { title: "Large Community", desc: "Access tools and open-source support." },
+                { title: "Secure & Proven", desc: "Used by Ethereum, BNB, Polygon." },
+                { title: "Rich Libraries", desc: "Use OpenZeppelin and more." },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="p-6 border border-red-600 rounded-xl bg-red-500 hover:bg-red-600 transition"
+                >
+                  <h4 className="mb-3 font-bold text-white">{item.title}</h4>
+                  <p className="text-red-100 text-sm">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* 🔴 USE CASES */}
         <section className="py-24 px-6 max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl mb-12">
-            Let’s Redefine The Future
-          </h2>
-
+          <h2 className="text-4xl md:text-5xl mb-12">Let’s Redefine The Future</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            {[ 
+            {[
               "Decentralized Finance (DeFi)",
               "Token Standards (ERC-20, ERC-721)",
               "DAO Governance Systems",
               "NFT Marketplaces",
               "Gaming & Metaverse",
             ].map((title, i) => (
-                <div
-                  key={i}
-                  className="p-10 rounded-2xl border border-red-500/20 bg-red-500/10 hover:bg-black hover:text-white hover:border-black transition group"
-                >
-                  <h3 className="text-xl group-hover:text-red-500 transition-colors">{title}</h3>
-                </div>
+              <div
+                key={i}
+                className="p-10 rounded-2xl border border-red-500/20 bg-red-500/10 hover:bg-black hover:text-white hover:border-black transition group"
+              >
+                <h3 className="text-xl group-hover:text-red-500 transition-colors font-bold">{title}</h3>
+              </div>
             ))}
           </div>
         </section>
 
         {/* 🔴 LEARNING RESOURCES */}
         <section className="py-24 px-6 max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl mb-12">
-            Start Your Smart Contract Journey
-          </h2>
-
-
+          <h2 className="text-4xl md:text-5xl mb-12">Start Your Smart Contract Journey</h2>
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {[
               "CryptoZombies",
@@ -222,36 +204,32 @@ export default function SolidityPage() {
             ].map((resource, i) => (
               <div
                 key={i}
-                className="p-6 rounded-xl border border-gray-200 bg-gray-50 hover:bg-black hover:text-white hover:border-black transition"
+                className="p-6 rounded-xl border border-gray-200 bg-gray-50 hover:bg-black hover:text-white hover:border-black transition cursor-pointer"
               >
-                <h4 className="font-semibold mb-1">{resource}</h4>
+                <h4 className="font-semibold">{resource}</h4>
               </div>
             ))}
           </div>
 
-          <h2 className="text-4xl md:text-5xl mb-6">
-            Deploy Your First Smart Contract
-          </h2>
+          <div className=" ">
+            <h2 className="text-4xl md:text-5xl mb-6">Deploy Your First Smart Contract</h2>
+            <p className="text-gray-500 mb-8 max-w-2xl">
+              MST Chain fully supports Solidity. You can use standard tools like Remix, Hardhat, or Truffle to build, test, and deploy.
+            </p>
+            <button className="px-8 py-4 bg-red-500 text-white font-bold rounded-xl hover:bg-red-600 transition-all transform hover:scale-105">
+              Start Building →
+            </button>
 
-          <p className="text-gray-400 mb-6">
-            MST Chain fully supports Solidity. Use Remix, Hardhat, or Truffle.
-          </p>
-
-          <button className="px-8 py-3 bg-red-500 rounded-lg hover:bg-red-600 mb-6">
-            Start Building →
-          </button>
-
-          <div className="h-80 border border-red-500/20 rounded-xl overflow-hidden bg-white relative mt-6">
-            <Image
-              src="/imgbanner.jpg"
-              alt="Smart Contract Banner"
-              fill
-              className="object-cover"
-              priority
-            />
+            <div className="h-80 border border-red-500/20 rounded-2xl overflow-hidden bg-white relative mt-12 shadow-2xl">
+              <Image
+                src="/imgbanner.jpg"
+                alt="Smart Contract Banner"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </section>
-
       </main>
     </>
   );

@@ -1,6 +1,8 @@
 "use client";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const useCases = [
   { id: "01", title: "Supply Chain", desc: "Track goods across global networks with immutable records.", size: "tall", icon: "chain" },
@@ -48,13 +50,24 @@ const icons = {
   percent: <><line x1="19" y1="5" x2="5" y2="19" /><circle cx="6.5" cy="6.5" r="2.5" /><circle cx="17.5" cy="17.5" r="2.5" /></>,
 };
 
-const sizeMap = { small: "h-[120px]", medium: "h-[180px]", tall: "h-[240px]" };
+const sizeMap = {
+  small: "h-[120px]",
+  medium: "h-[180px]",
+  tall: "h-[240px]",
+};
 
 const Card = ({ item, index }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const router = useRouter();
+
+  const handleClick = () => {
+    const slug = item.title.toLowerCase().replace(/\s+/g, "-").replace(/\./g, "");
+    router.push(`/usecase-pages/${slug}`);
+  };
 
   return (
     <motion.div
+      onClick={handleClick}
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
@@ -63,53 +76,48 @@ const Card = ({ item, index }) => {
       onMouseLeave={() => setIsHovered(false)}
       className={`
         relative group cursor-pointer overflow-hidden rounded-[2rem] border border-black
-        p-7 flex flex-col justify-end
-        transition-all duration-500
+        p-7 flex flex-col justify-end transition-all duration-500
         ${sizeMap[item.size]}
-        /* HOVER: Background turns Red */
         hover:bg-red-600 hover:border-red-600 hover:shadow-2xl hover:shadow-red-500/30
         ${isHovered ? "bg-red-600" : "bg-white/60 backdrop-blur-xl"}
       `}
       style={{ breakInside: "avoid" }}
     >
-      {/* Icon Background Glow */}
+      {/* BIG ICON */}
+      <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 pointer-events-none ${isHovered ? "opacity-0 scale-75" : "opacity-70 scale-100 text-zinc-300"}`}>
+        <svg className="w-20 h-20 lg:w-24 lg:h-24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+          {icons[item.icon]}
+        </svg>
+      </div>
+
+      {/* Glow */}
       <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/0 group-hover:bg-white/10 blur-3xl transition-all duration-700" />
 
-      {/* Dynamic Icon: Turns White on Hover */}
-      <div className={`
-        absolute top-7 right-7 transition-all duration-500
-        ${isHovered ? "text-white scale-110 -rotate-12" : "text-zinc-300"}
-      `}>
+      {/* Small icon */}
+      <div className={`absolute top-7 right-7 transition-all duration-500 ${isHovered ? "text-white scale-110 -rotate-12" : "text-zinc-300"}`}>
         <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
           {icons[item.icon]}
         </svg>
       </div>
 
       <div className="relative z-10">
-        {/* Title: Turns White on Hover */}
-        <h3 className={`
-          font-black text-base lg:text-lg leading-tight tracking-tight uppercase transition-colors duration-300
-          ${isHovered ? "text-white" : "text-zinc-800"}
-        `}>
+        <h3 className={`font-black text-base lg:text-lg uppercase transition-colors ${isHovered ? "text-white" : "text-zinc-800"}`}>
           {item.title}
         </h3>
 
         <AnimatePresence>
           {isHovered && (
             <motion.p
-              initial={{ opacity: 0, height: 0, y: 10 }}
-              animate={{ opacity: 1, height: "auto", y: 0 }}
-              exit={{ opacity: 0, height: 0, y: 10 }}
-              className="text-[12px] leading-relaxed font-medium pt-3 text-red-50"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="text-[12px] pt-3 text-red-50"
             >
               {item.desc}
             </motion.p>
           )}
         </AnimatePresence>
       </div>
-
-      {/* Decorative Corner Accent */}
-      <div className="absolute top-0 right-0 w-8 h-8 bg-gradient-to-bl from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
     </motion.div>
   );
 };

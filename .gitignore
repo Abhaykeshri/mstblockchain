@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+**/node_modules/
+
+# Next.js
+.next/
+**/.next/
+out/
+**/out/
+.turbo/
+**/.turbo/
+
+# logs
+*.log
+next-dev.out.log
+next-dev.err.log
+
+# misc
+.DS_Store
+Thumbs.db
+.env
+.env.*
