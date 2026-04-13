@@ -376,21 +376,21 @@ export default function Navbar() {
           <div className="pointer-events-none absolute inset-0 bg-black/20" />
 
           <nav className="relative z-20 flex h-16 w-full items-center justify-between px-4 lg:px-8">
-            <Link href="#" className="-ml-1 flex items-center gap-2 group">
-              <motion.div whileHover={{ rotate: 180 }} transition={{ duration: 0.4, ease: 'easeInOut' }}>
-                <Image
-                  src="/assets/hero/mst-dark-logo.svg"
-                  alt="MST logo"
-                  width={40}
-                  height={36}
-                  className="h-[36px] w-[40px] drop-shadow-sm transition-all invert brightness-0 invert-[1]"
-                  priority
-                />
-              </motion.div>
-              <span className="font-[var(--font-space-grotesk)] text-sm font-extrabold tracking-[0.05em] text-white">
-                MST<span className="text-[#ff2d2d]">Blockchain</span>
-              </span>
-            </Link>
+           <Link href="/" className="-ml-1 flex items-center gap-2 group">
+  <motion.div
+    whileHover={{ rotate: 10, scale: 1.08 }}
+    transition={{ duration: 0.3, ease: "easeInOut" }}
+    className="flex items-center justify-center"
+  >
+    <img
+      src="https://ik.imagekit.io/avboeabnm1/images/logo.png"
+      alt="MST logo"
+      width={70}
+      height={70}
+      className="h-[40px] w-auto object-contain transition-all duration-300 group-hover:drop-shadow-xl"
+    />
+  </motion.div>
+</Link>
 
             <ul className="hidden items-center gap-10 lg:flex">
               {navItems.map((item) => (
