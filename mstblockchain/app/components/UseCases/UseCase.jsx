@@ -116,7 +116,7 @@ const Card = ({ item, index }) => {
 
 const UseCases = () => {
   return (
-    <section className="relative w-full bg-[#fcfcfc] py-24 overflow-hidden min-h-screen">
+    <section id="usecases" className="relative w-full bg-[#fcfcfc] py-24 overflow-hidden min-h-screen">
       {/* --- LIVING ORBITAL BACKGROUND --- */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-40">
         <motion.div

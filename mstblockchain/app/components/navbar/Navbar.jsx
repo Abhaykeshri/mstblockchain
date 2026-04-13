@@ -95,6 +95,7 @@ const productsResources = [
 
 export default function Navbar() {
   const navbarRef = useRef(null);
+  const mobileMenuRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isBuildOpen, setIsBuildOpen] = useState(false);
   const [isLearnOpen, setIsLearnOpen] = useState(false);
@@ -118,7 +119,10 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+      const clickedInsideNavbar = navbarRef.current?.contains(event.target);
+      const clickedInsideMobileMenu = mobileMenuRef.current?.contains(event.target);
+
+      if (!clickedInsideNavbar && !clickedInsideMobileMenu) {
         setIsOpen(false);
         closeAllMenus();
         setMobileBuildOpen(false);
@@ -141,6 +145,9 @@ export default function Navbar() {
 
   const openBuildMenu = () => {
     if (buildCloseTimerRef.current) clearTimeout(buildCloseTimerRef.current);
+    setIsLearnOpen(false);
+    setIsProductsOpen(false);
+    setIsUseCasesOpen(false);
     setIsBuildOpen(true);
   };
 
@@ -151,6 +158,9 @@ export default function Navbar() {
 
   const openLearnMenu = () => {
     if (learnCloseTimerRef.current) clearTimeout(learnCloseTimerRef.current);
+    setIsBuildOpen(false);
+    setIsProductsOpen(false);
+    setIsUseCasesOpen(false);
     setIsLearnOpen(true);
   };
 
@@ -161,6 +171,9 @@ export default function Navbar() {
 
   const openProductsMenu = () => {
     if (productsCloseTimerRef.current) clearTimeout(productsCloseTimerRef.current);
+    setIsBuildOpen(false);
+    setIsLearnOpen(false);
+    setIsUseCasesOpen(false);
     setIsProductsOpen(true);
   };
 
@@ -171,6 +184,9 @@ export default function Navbar() {
 
   const openUseCasesMenu = () => {
     if (useCasesCloseTimerRef.current) clearTimeout(useCasesCloseTimerRef.current);
+    setIsBuildOpen(false);
+    setIsLearnOpen(false);
+    setIsProductsOpen(false);
     setIsUseCasesOpen(true);
   };
 
@@ -180,7 +196,7 @@ export default function Navbar() {
   };
 
   const dropdownPanelClass =
-    'absolute left-1/2 top-full mt-4 w-[760px] -translate-x-1/2 rounded-2xl border border-black bg-white p-8 text-black shadow-[0_18px_50px_rgba(0,0,0,0.16)]';
+    'absolute left-1/2 top-full mt-4 w-[min(760px,calc(100vw-2rem))] -translate-x-1/2 rounded-2xl border border-black bg-white p-8 text-black shadow-[0_18px_50px_rgba(0,0,0,0.16)]';
 
   const navLinkClass = (active) =>
     `group relative text-sm font-medium lowercase tracking-tight transition-colors ${active ? 'text-white' : 'text-white/50 hover:text-white'}`;
@@ -193,7 +209,7 @@ export default function Navbar() {
       transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={openBuildMenu}
       onMouseLeave={closeBuildMenu}
-      className={dropdownPanelClass}
+      className={`${dropdownPanelClass} z-[60]`}
     >
       <div className="grid grid-cols-2 gap-10">
         {buildResources.map((group, groupIndex) => (
@@ -231,7 +247,7 @@ export default function Navbar() {
       transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={openLearnMenu}
       onMouseLeave={closeLearnMenu}
-      className={dropdownPanelClass}
+      className={`${dropdownPanelClass} z-[60]`}
     >
       <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1">
         <div className="space-y-5 lg:border-r lg:border-black/10 lg:pr-10">
@@ -282,7 +298,7 @@ export default function Navbar() {
       transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={openProductsMenu}
       onMouseLeave={closeProductsMenu}
-      className="absolute left-1/2 top-full mt-4 w-[420px] -translate-x-1/2 rounded-2xl border border-black bg-white p-6 text-black shadow-[0_18px_50px_rgba(0,0,0,0.16)]"
+      className="absolute left-1/2 top-full z-[60] mt-4 w-[min(420px,calc(100vw-2rem))] -translate-x-1/2 rounded-2xl border border-black bg-white p-6 text-black shadow-[0_18px_50px_rgba(0,0,0,0.16)]"
     >
       <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#FF2D2D]">PRODUCTS</p>
 
@@ -328,7 +344,7 @@ export default function Navbar() {
       transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={openUseCasesMenu}
       onMouseLeave={closeUseCasesMenu}
-      className="absolute left-1/2 top-full mt-4 w-[460px] max-w-[92vw] -translate-x-1/2 rounded-2xl border border-black/10 bg-white px-4 py-3 text-black shadow-[0_18px_48px_rgba(0,0,0,0.14)] backdrop-blur-md"
+      className="absolute left-1/2 top-full z-[60] mt-4 w-[min(460px,calc(100vw-2rem))] -translate-x-1/2 rounded-2xl border border-black/10 bg-white px-4 py-3 text-black shadow-[0_18px_48px_rgba(0,0,0,0.14)] backdrop-blur-md"
     >
       <div className="mb-3 flex items-center justify-between">
         <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#FF2D2D]">USECASES</p>
@@ -379,7 +395,7 @@ export default function Navbar() {
             <Link href="#" className="-ml-1 flex items-center gap-2 group">
               <motion.div whileHover={{ rotate: 180 }} transition={{ duration: 0.4, ease: 'easeInOut' }}>
                 <Image
-                  src="/assets/hero/mst-dark-logo.svg"
+                  src="/mst-dark-logo.svg"
                   alt="MST logo"
                   width={40}
                   height={36}
@@ -543,16 +559,22 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen ? (
           <motion.div
+            ref={mobileMenuRef}
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 8, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute left-4 right-4 top-full mt-2 rounded-2xl border border-white/10 bg-black/95 p-4 text-white shadow-2xl backdrop-blur-[12px] lg:hidden"
+            className="absolute left-4 right-4 top-full z-[60] mt-2 max-h-[calc(100vh-5.5rem)] overflow-y-auto rounded-2xl border border-white/10 bg-black/95 p-4 text-white shadow-2xl backdrop-blur-[12px] lg:hidden"
           >
             <div className="space-y-1">
               <button
                 type="button"
-                onClick={() => setMobileBuildOpen((prev) => !prev)}
+                onClick={() => {
+                  setMobileBuildOpen((prev) => !prev);
+                  setMobileLearnOpen(false);
+                  setMobileProductsOpen(false);
+                  setMobileUseCasesOpen(false);
+                }}
                 className="flex w-full items-center justify-between rounded-xl bg-white/5 px-4 py-3 text-sm font-bold lowercase text-white transition-all"
               >
                 <span className="flex items-center gap-3">
@@ -562,65 +584,14 @@ export default function Navbar() {
                 <ChevronRight size={16} className={`transition-transform duration-300 ${mobileBuildOpen ? 'rotate-90' : ''}`} />
               </button>
 
-              <AnimatePresence>
-                {mobileBuildOpen ? (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0, y: -6 }}
-                    animate={{ opacity: 1, height: 'auto', y: 0 }}
-                    exit={{ opacity: 0, height: 0, y: -6 }}
-                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="overflow-hidden rounded-xl border border-white/10 bg-white/5 px-3 py-3"
-                  >
-                    <div className="space-y-4">
-                      {buildResources.map((group) => (
-                        <div key={group.title} className="space-y-2">
-                          <p className="px-2 text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#EA2828]">{group.title}</p>
-                          <div className="space-y-1">
-                            {group.items.map((item) => (
-                              <Link
-                                key={item.label}
-                                href={item.href}
-                                onClick={() => setIsOpen(false)}
-                                className="flex items-center justify-between rounded-lg px-3 py-2 text-xs font-medium text-white/70 transition-all hover:bg-white/5 hover:text-white"
-                              >
-                                <span>{item.label}</span>
-                                <ChevronRight size={12} className="text-white/25" />
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                ) : null}
-              </AnimatePresence>
-
-              <button
-                type="button"
-                onClick={() => setMobileLearnOpen((prev) => !prev)}
-                className="mt-1 flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-bold lowercase text-white/60 transition-all hover:bg-white/5 hover:text-white"
-              >
-                <span className="flex items-center gap-3">
-                  <span className="h-1.5 w-1.5 rounded-full bg-white/20 shadow-sm" />
-                  Learn
-                </span>
-                <ChevronRight size={16} className={`transition-transform duration-300 ${mobileLearnOpen ? 'rotate-90' : ''}`} />
-              </button>
-
-              <AnimatePresence>
-                {mobileLearnOpen ? (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0, y: -6 }}
-                    animate={{ opacity: 1, height: 'auto', y: 0 }}
-                    exit={{ opacity: 0, height: 0, y: -6 }}
-                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="overflow-hidden rounded-xl border border-white/10 bg-white/5 px-3 py-3"
-                  >
-                    <div className="space-y-4">
-                      <div className="space-y-2">
-                        <p className="px-2 text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#EA2828]">BLOCKCHAIN</p>
+              {mobileBuildOpen ? (
+                <div className="mt-2 overflow-hidden rounded-xl border border-white/10 bg-white/5 px-3 py-3">
+                  <div className="space-y-4">
+                    {buildResources.map((group) => (
+                      <div key={group.title} className="space-y-2">
+                        <p className="px-2 text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#EA2828]">{group.title}</p>
                         <div className="space-y-1">
-                          {learnResources[0].items.map((item) => (
+                          {group.items.map((item) => (
                             <Link
                               key={item.label}
                               href={item.href}
@@ -633,24 +604,69 @@ export default function Navbar() {
                           ))}
                         </div>
                       </div>
-
-                      <div className="space-y-2">
-                        <p className="px-2 text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#EA2828]">HIGHLIGHTS</p>
-                        <div className="rounded-none border border-white/15 bg-white/10 p-4">
-                          <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-white/50">LATEST TWEET</div>
-                          <div className="flex h-[120px] items-center justify-center border border-white/10 bg-black/20 text-xs text-white/60">
-                            Tweet content coming soon
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ) : null}
-              </AnimatePresence>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
 
               <button
                 type="button"
-                onClick={() => setMobileProductsOpen((prev) => !prev)}
+                onClick={() => {
+                  setMobileLearnOpen((prev) => !prev);
+                  setMobileBuildOpen(false);
+                  setMobileProductsOpen(false);
+                  setMobileUseCasesOpen(false);
+                }}
+                className="mt-1 flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-bold lowercase text-white/60 transition-all hover:bg-white/5 hover:text-white"
+              >
+                <span className="flex items-center gap-3">
+                  <span className="h-1.5 w-1.5 rounded-full bg-white/20 shadow-sm" />
+                  Learn
+                </span>
+                <ChevronRight size={16} className={`transition-transform duration-300 ${mobileLearnOpen ? 'rotate-90' : ''}`} />
+              </button>
+
+              {mobileLearnOpen ? (
+                <div className="mt-2 overflow-hidden rounded-xl border border-white/10 bg-white/5 px-3 py-3">
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <p className="px-2 text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#EA2828]">BLOCKCHAIN</p>
+                      <div className="space-y-1">
+                        {learnResources[0].items.map((item) => (
+                          <Link
+                            key={item.label}
+                            href={item.href}
+                            onClick={() => setIsOpen(false)}
+                            className="flex items-center justify-between rounded-lg px-3 py-2 text-xs font-medium text-white/70 transition-all hover:bg-white/5 hover:text-white"
+                          >
+                            <span>{item.label}</span>
+                            <ChevronRight size={12} className="text-white/25" />
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="px-2 text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#EA2828]">HIGHLIGHTS</p>
+                      <div className="rounded-none border border-white/15 bg-white/10 p-4">
+                        <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-white/50">LATEST TWEET</div>
+                        <div className="flex h-[120px] items-center justify-center border border-white/10 bg-black/20 text-xs text-white/60">
+                          Tweet content coming soon
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileProductsOpen((prev) => !prev);
+                  setMobileBuildOpen(false);
+                  setMobileLearnOpen(false);
+                  setMobileUseCasesOpen(false);
+                }}
                 className="mt-1 flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-bold lowercase text-white/60 transition-all hover:bg-white/5 hover:text-white"
               >
                 <span className="flex items-center gap-3">
@@ -660,40 +676,37 @@ export default function Navbar() {
                 <ChevronRight size={16} className={`transition-transform duration-300 ${mobileProductsOpen ? 'rotate-90' : ''}`} />
               </button>
 
-              <AnimatePresence>
-                {mobileProductsOpen ? (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0, y: -6 }}
-                    animate={{ opacity: 1, height: 'auto', y: 0 }}
-                    exit={{ opacity: 0, height: 0, y: -6 }}
-                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="overflow-hidden rounded-xl border border-white/10 bg-white/5 px-3 py-3"
-                  >
-                    <div className="space-y-2">
-                      <p className="px-2 text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#EA2828]">PRODUCTS</p>
-                      {productsResources.map((product, index) => (
-                        <Link
-                          key={product.name}
-                          href={product.href}
-                          onClick={() => setIsOpen(false)}
-                          className={`block rounded-lg px-3 py-2 transition-all hover:bg-white/5 ${index !== productsResources.length - 1 ? 'border-b border-white/10' : ''}`}
-                        >
-                          <div className="text-xs font-bold text-white transition-all hover:text-[#EA2828]">
-                            {product.name}
-                          </div>
-                          <div className="mt-1 text-[11px] text-white/55">
-                            {product.description}
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </motion.div>
-                ) : null}
-              </AnimatePresence>
+              {mobileProductsOpen ? (
+                <div className="mt-2 overflow-hidden rounded-xl border border-white/10 bg-white/5 px-3 py-3">
+                  <div className="space-y-2">
+                    <p className="px-2 text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#EA2828]">PRODUCTS</p>
+                    {productsResources.map((product, index) => (
+                      <Link
+                        key={product.name}
+                        href={product.href}
+                        onClick={() => setIsOpen(false)}
+                        className={`block rounded-lg px-3 py-2 transition-all hover:bg-white/5 ${index !== productsResources.length - 1 ? 'border-b border-white/10' : ''}`}
+                      >
+                        <div className="text-xs font-bold text-white transition-all hover:text-[#EA2828]">
+                          {product.name}
+                        </div>
+                        <div className="mt-1 text-[11px] text-white/55">
+                          {product.description}
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
 
               <button
                 type="button"
-                onClick={() => setMobileUseCasesOpen((prev) => !prev)}
+                onClick={() => {
+                  setMobileUseCasesOpen((prev) => !prev);
+                  setMobileBuildOpen(false);
+                  setMobileLearnOpen(false);
+                  setMobileProductsOpen(false);
+                }}
                 className="mt-1 flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-bold lowercase text-white/60 transition-all hover:bg-white/5 hover:text-white"
               >
                 <span className="flex items-center gap-3">
@@ -703,31 +716,23 @@ export default function Navbar() {
                 <ChevronRight size={16} className={`transition-transform duration-300 ${mobileUseCasesOpen ? 'rotate-90' : ''}`} />
               </button>
 
-              <AnimatePresence>
-                {mobileUseCasesOpen ? (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0, y: -6 }}
-                    animate={{ opacity: 1, height: 'auto', y: 0 }}
-                    exit={{ opacity: 0, height: 0, y: -6 }}
-                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="overflow-hidden rounded-xl border border-white/10 bg-white/5 px-3 py-3"
-                  >
-                    <div className="grid max-h-[450px] grid-cols-1 gap-2 overflow-y-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid-cols-2">
-                      {usecases.map((item) => (
-                        <Link
-                          key={item.id}
-                          href={item.link}
-                          onClick={() => setIsOpen(false)}
-                          className="rounded-xl border border-white/10 bg-black/20 px-3 py-3 transition-all hover:border-[#EA2828]/70 hover:bg-white/5"
-                        >
-                          <div className="text-[10px] font-extrabold uppercase tracking-[0.12em] text-[#EA2828]">{item.id}</div>
-                          <div className="mt-1 text-xs font-semibold text-white/85">{item.title}</div>
-                        </Link>
-                      ))}
-                    </div>
-                  </motion.div>
-                ) : null}
-              </AnimatePresence>
+              {mobileUseCasesOpen ? (
+                <div className="mt-2 overflow-hidden rounded-xl border border-white/10 bg-white/5 px-3 py-3">
+                  <div className="flex max-h-[55vh] flex-col gap-2 overflow-y-auto scroll-smooth pr-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                    {usecases.map((item) => (
+                      <Link
+                        key={item.id}
+                        href={item.link}
+                        onClick={() => setIsOpen(false)}
+                        className="rounded-xl border border-white/10 bg-black/20 px-3 py-3 transition-all hover:border-[#EA2828]/70 hover:bg-white/5"
+                      >
+                        <div className="text-[10px] font-extrabold uppercase tracking-[0.12em] text-[#EA2828]">{item.id}</div>
+                        <div className="mt-1 text-xs font-semibold text-white/85">{item.title}</div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
 
               {navItems
                 .filter((item) => item.label !== 'Build' && item.label !== 'Learn' && item.label !== 'Products' && item.label !== 'Usecases')

@@ -52,7 +52,7 @@ export default function Footer() {
           <motion.div variants={itemVariants} className="space-y-6">
             <a href="#" className="inline-flex items-center justify-center lg:justify-start">
               <Image
-                src="/assets/hero/mst-dark-logo.svg"
+                src="/mst-dark-logo.svg"
                 alt="MST Protocol"
                 width={170}
                 height={44}
