@@ -64,10 +64,10 @@ export default function MSTBlogSection() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-7xl font-black tracking-tighter leading-none"
+            className="text-5xl md:text-7xl font-extrabold leading-none"
           >
             LATEST{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">
+            <span className="text-red-500">
               BLOGS
             </span>
           </motion.h2>
@@ -113,11 +113,11 @@ function BlogCard({ post, index }) {
 
       {/* META */}
       <div className="flex items-center gap-3 mb-4">
-        <span className="text-red-600 font-mono text-xs font-bold tracking-[0.2em]">
+        <span className="text-red-600  text-xs font-bold tracking-[0.2em]">
           {post.category}
         </span>
         <div className="h-1 w-1 rounded-full bg-black/20" />
-        <span className="text-gray-500 font-mono text-xs font-medium uppercase">
+        <span className="text-gray-500  text-xs font-medium uppercase">
           {post.date}
         </span>
       </div>
@@ -128,7 +128,7 @@ function BlogCard({ post, index }) {
       </h3>
 
       {/* EXCERPT */}
-      <p className="text-gray-600 text-sm leading-relaxed mb-8 line-clamp-2 font-medium">
+      <p className="text-gray-600 text-sm leading-relaxed mb-8 line-clamp-2 ">
         {post.excerpt}
       </p>
 

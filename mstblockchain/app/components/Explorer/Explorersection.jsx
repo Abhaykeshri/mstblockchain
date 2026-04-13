@@ -114,8 +114,8 @@ export default function MSTExplorerFull() {
 
         {/* HEADER */}
         <div className="flex flex-col items-center text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4">
-            MST <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">EXPLORER</span>
+          <h2 className="text-4xl md:text-6xl font-extrabold mb-4">
+            MST <span className="text-transparent bg-clip-text bg-red-500">EXPLORER</span>
           </h2>
           <p className="text-gray-600 max-w-md text-lg">
             Real-time visualization of the MST mainnet ledger and transaction flow.

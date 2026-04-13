@@ -39,7 +39,7 @@ export default function EcosystemSection() {
           className="absolute top-[10%] left-[10%] flex items-center gap-2"
         >
           <span className="relative flex h-1.5 w-1.5"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span><span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-red-500"></span></span>
-          <span className="text-[9px] font-black tracking-[0.2em] text-red-300 whitespace-nowrap">Use Cases</span>
+          <span className="text-[9px] font-extrabold text-red-500 whitespace-nowrap">Use Cases</span>
         </motion.div>
       </motion.div>
 
@@ -56,7 +56,7 @@ export default function EcosystemSection() {
         >
           <div className="h-px w-8 bg-gradient-to-r from-transparent via-red-500 to-red-200" />
           <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span><span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span></span>
-          <span className="text-[10px] font-black tracking-[0.2em] text-red-400 whitespace-nowrap">9+ Active Nodes</span>
+          <span className="text-[10px] font-extrabold text-red-500 whitespace-nowrap">9+ Active Nodes</span>
         </motion.div>
       </motion.div>
 
@@ -87,8 +87,8 @@ export default function EcosystemSection() {
       {/* --- Content Section --- */}
       <div className="relative max-w-7xl mx-auto z-10">
         <div className="mb-16 text-center">
-          <h2 className="text-4xl md:text-6xl font-black tracking-tight">
-            JOIN OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">ECOSYSTEM.</span>
+          <h2 className="text-4xl md:text-6xl font-extrabold ">
+            JOIN OUR <span className="text-red-500">ECOSYSTEM.</span>
           </h2>
         </div>
 
@@ -124,7 +124,7 @@ export default function EcosystemSection() {
           >
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
             <div className="relative z-10">
-              <h3 className="text-3xl font-black text-white leading-tight mb-4">
+              <h3 className="text-3xl font-bold text-white leading-tight mb-4">
                 READY TO BUILD<br /> THE FUTURE?
               </h3>
             </div>

@@ -104,7 +104,7 @@ export default function WhatIsMST() {
 
       <div className="relative z-10 mx-auto w-full max-w-[90rem] px-4 py-12 sm:px-5 lg:px-6">
        
-        <h2 className="mt-4 font-[var(--font-space-grotesk)] text-4xl font-extrabold tracking-[-0.03em] text-black sm:text-5xl md:text-6xl">
+        <h2 className="mt-4  text-4xl font-extrabold tracking-[-0.03em] text-black sm:text-5xl md:text-6xl">
           What is MST?
         </h2>
 

@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion, useMotionValue, useTransform, animate, useInView, AnimatePresence } from 'framer-motion';
 import HeroImage from './HeroImage';
+import PartnerMarquee from './PartnerMarquee';
 
 // --- DATA ---
 const slides = [
@@ -114,7 +115,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -25 }}
                 transition={{ duration: 0.5 }}
-                className="font-[var(--font-space-grotesk)] text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-black"
+                className="font-[var(--font-space-grotesk)] text-4xl md:text-6xl leading-tight tracking-tight text-black"
               >
                 {formatHeading(headings[headingIndex])}
               </motion.h1>
@@ -177,19 +178,9 @@ export default function HeroSection() {
       </div>
 
       {/* 🔥 PERFECT MARQUEE */}
-      <div className="absolute bottom-0 w-full py-4 border-t border-black/5 bg-white/60 backdrop-blur-sm z-10 overflow-hidden">
+      <div className="absolute bottom-0 w-full py-4 sm z-10 overflow-hidden">
 
-        <div className="marquee-track flex items-center">
-          {[...partnerImages, ...partnerImages].map((src, i) => (
-            <div key={i} className="mx-8 flex-shrink-0">
-              <img
-                src={src}
-                alt="partner"
-                className="h-5 opacity-40 hover:opacity-90 transition duration-300"
-              />
-            </div>
-          ))}
-        </div>
+        <PartnerMarquee/>
 
       </div>
 
