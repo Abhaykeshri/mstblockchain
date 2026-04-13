@@ -53,7 +53,7 @@ export default function Chatbot() {
         height: "77vh",
         background: "#fff",
         borderRadius: "16px",
-        boxShadow: "0 12px 30px rgba(0,0,0,0.35)",
+        boxShadow: "0 12px 30px rgba(255,0,0,0.4)",
         transition: "0.3s ease",
         zIndex: 999,
         border: "1px solid #ddd",

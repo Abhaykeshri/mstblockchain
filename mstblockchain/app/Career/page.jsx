@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Mail, Briefcase, MapPin, Send, Users, Globe, ArrowRight } from "lucide-react";
 import { FiCheckCircle } from "react-icons/fi";
 import { motion } from "framer-motion";
+import MstBuddy from '../components/MstBuddy/BuddyPanel';
 
 const careerBenefits = [
   {

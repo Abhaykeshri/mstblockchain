@@ -4,6 +4,7 @@ import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react";
 import { FiCheckCircle } from "react-icons/fi";
 import { motion } from "framer-motion";
 
+
 const contactInfo = [
   {
     icon: <Mail className="w-5 h-5" />,

@@ -1,6 +1,7 @@
 'use client';
 
 import React from "react";
+import MstBuddy from '../components/MstBuddy/BuddyPanel';
 import { motion } from "framer-motion";
 import {
   FiShield, FiCpu, FiLayers, FiGlobe, 
