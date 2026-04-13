@@ -68,9 +68,9 @@ function formatHeading(text) {
   return parts.map((part, i) =>
     i % 2 === 1 ? (
       <span key={i} className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2D2D] via-red-600 to-rose-500">
-        {part}
+        {part.toUpperCase()}
       </span>
-    ) : part
+    ) : part.toUpperCase()
   );
 }
 
@@ -95,7 +95,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen w-full bg-[#FAFAFA] overflow-hidden font-[var(--font-inter)]">
+    <section className="relative min-h-screen w-full bg-[#FAFAFA] overflow-hidden font-extrabold">
 
       <div className="relative z-10 mx-auto max-w-[90rem] min-h-screen grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] items-center gap-10 px-6 pt-28 pb-12">
 
@@ -107,7 +107,7 @@ export default function HeroSection() {
           className="flex flex-col items-center text-center lg:items-start lg:text-left"
         >
           {/* HEADING */}
-          <div className="h-[160px] md:h-[200px]">
+          <div className="h-[160px] md:h-[200px] mb-20">
             <AnimatePresence mode="wait">
               <motion.h1
                 key={headingIndex}
@@ -115,16 +115,14 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -25 }}
                 transition={{ duration: 0.5 }}
-                className="font-[var(--font-space-grotesk)] text-4xl md:text-6xl leading-tight tracking-tight text-black"
+                className="text-4xl md:text-6xl leading-tight tracking-tight text-black font-extrabold uppercase"
               >
                 {formatHeading(headings[headingIndex])}
               </motion.h1>
             </AnimatePresence>
           </div>
 
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-black/60 font-medium border-l-2 border-[#FF2D2D]/30 pl-4 bg-gradient-to-r from-[#FF2D2D]/5 to-transparent py-2 text-left">
-            A performance-first blockchain stack engineered for institutional trust and global finality.
-          </p>
+        
 
           {/* BUTTONS */}
           <div className="mt-6 sm:mt-8 grid grid-cols-2 sm:flex gap-2 sm:gap-4 w-full max-w-md">
@@ -146,11 +144,11 @@ export default function HeroSection() {
 </div>
 
           {/* STATS */}
-        <div className="mt-8 sm:mt-12 grid grid-cols-3 gap-2 sm:gap-4 w-full max-w-xl ">
+        <div className="mt-5 sm:mt-5 mb-5 grid grid-cols-3 gap-2 sm:gap-4 w-full max-w-xl ">
   {stats.map((stat) => (
     <div
       key={stat.label}
-      className="group p-2 sm:p-4 bg-white/60 border border-black/5 rounded-lg sm:rounded-2xl backdrop-blur-md hover:border-[#FF2D2D]/40 transition-all text-left"
+      className="group  p-2 sm:p-4 bg-white/60 border border-black/5 rounded-lg sm:rounded-2xl backdrop-blur-md hover:border-[#FF2D2D]/40 transition-all text-left"
     >
       <p className="text-[8px] sm:text-[10px] uppercase tracking-wide text-black/40 flex items-center gap-1">
         {stat.active && (
@@ -159,7 +157,7 @@ export default function HeroSection() {
         {stat.label}
       </p>
 
-      <p className="text-sm sm:text-2xl font-bold mt-1 text-black font-[var(--font-space-grotesk)] group-hover:text-[#FF2D2D] transition-colors">
+      <p className="text-2xl sm:text-4xl font-extrabold mt-1 text-black group-hover:text-[#FF2D2D] transition-colors">
         <CountUp
           value={stat.value}
           prefix={stat.prefix}
@@ -173,7 +171,9 @@ export default function HeroSection() {
         </motion.div>
 
         {/* RIGHT */}
-        <HeroImage slides={slides} slideCount={slideCount} />
+        <div className="flex justify-end w-full pr-5">
+          <HeroImage slides={slides} slideCount={slideCount} />
+        </div>
 
       </div>
 

@@ -81,15 +81,18 @@ const Card = ({ item, index }) => {
         hover:bg-red-600 hover:border-red-600 hover:shadow-2xl hover:shadow-red-500/30
         ${isHovered ? "bg-red-600" : "bg-white/60 backdrop-blur-xl"}
       `}
-      style={{ breakInside: "avoid" }}
+      style={{
+        breakInside: "avoid",
+        ...(Number(item.id) >= 1 && Number(item.id) <= 19 && {
+                    backgroundImage: isHovered ? 'none' : `url('/usecaselogos/${Number(item.id)}.png')`,
+                    backgroundSize: "70px",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                      opacity: 0.5,
+                    
+        })
+      }}
     >
-      {/* BIG ICON */}
-      <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 pointer-events-none ${isHovered ? "opacity-0 scale-75" : "opacity-70 scale-100 text-zinc-300"}`}>
-        <svg className="w-20 h-20 lg:w-24 lg:h-24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-          {icons[item.icon]}
-        </svg>
-      </div>
-
       {/* Glow */}
       <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/0 group-hover:bg-white/10 blur-3xl transition-all duration-700" />
 
@@ -101,23 +104,24 @@ const Card = ({ item, index }) => {
       </div>
 
       <div className="relative z-10">
-        <h3 className={`font-black text-base lg:text-lg uppercase transition-colors ${isHovered ? "text-white" : "text-zinc-800"}`}>
-          {item.title}
-        </h3>
-
-        <AnimatePresence>
-          {isHovered && (
-            <motion.p
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="text-[12px] pt-3 text-red-50"
-            >
-              {item.desc}
-            </motion.p>
-          )}
-        </AnimatePresence>
-      </div>
+        <div className="relative z-10 flex flex-col h-full justify-end">
+          <AnimatePresence>
+            {isHovered && (
+              <motion.p
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="text-[12px] pt-3 text-red-50"
+              >
+                {item.desc}
+              </motion.p>
+            )}
+          </AnimatePresence>
+          <h3 className={`font-black text-base lg:text-lg uppercase transition-colors mt-2 ${isHovered ? "text-white" : "text-zinc-800"}`}>
+            {item.title}
+          </h3>
+        </div>
+      </div>  
     </motion.div>
   );
 };

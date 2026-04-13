@@ -402,6 +402,7 @@ export default function Navbar() {
                         onClick={() => setIsBuildOpen((prev) => !prev)}
                         className={navLinkClass(true)}
                         aria-expanded={isBuildOpen}
+                       
                       >
                         <span>Build</span>
                         <span className="absolute -bottom-1 left-0 h-[1.5px] w-full bg-[#ff2d2d]" />
@@ -473,7 +474,7 @@ export default function Navbar() {
     
     <Link
       href="#"
-      className="relative inline-flex items-center space-x-2 rounded-full 
+      className="relative inline-flex items-center space-x-2 rounded-full mb-3
       bg-gradient-to-r from-[#ff2d2d] to-[#ff4d4d] mb-2
       px-6 py-2.5 text-[11px] font-extrabold uppercase tracking-[0.15em] text-white
       transition-all duration-300 ease-out
@@ -498,7 +499,7 @@ export default function Navbar() {
     
     <Link
       href="#"
-      className="relative inline-flex items-center space-x-2 rounded-full mb-2
+      className="relative inline-flex items-center space-x-2 rounded-full mb-3
       bg-white px-6 py-2.5 text-[11px] font-extrabold uppercase tracking-[0.15em] text-black
       transition-all duration-300 ease-out
       hover:shadow-[0_6px_20px_rgba(255,255,255,0.2)]
