@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 const logos = [
   {
@@ -12,7 +12,7 @@ const logos = [
     link: "https://bridgekey.io/",
   },
   {
-    src: "/assets/logo-buddy.svg",
+    src: "/assets/MST Buddy.jpg.jpeg",
     title: "MST Buddy",
     description:
       "AI-powered assistant platform acting as a 24/7 smart guide for the MST ecosystem.",
@@ -20,7 +20,7 @@ const logos = [
     link: "https://buddy.mstblockchain.com/",
   },
   {
-    src: "/assets/logo-masterstroke.svg",
+    src: "/assets/MST Academy.jpg.jpeg",
     title: "MST Academy",
     description:
       "Educational gateway for blockchain mastery, certification, and Web3 developer tours.",
@@ -29,10 +29,35 @@ const logos = [
   },
 ];
 
+
+// ... (logos array remains exactly the same as your previous version)
+
 const LogoFlipSection = () => {
   const containerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [rotateY, setRotateY] = useState(0);
+
+  // --- MOUSE TRACKING FOR 3D INTERACTION ---
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Smooth out the tilting movement
+  const springConfig = { damping: 20, stiffness: 100 };
+  const tiltX = useSpring(useTransform(mouseY, [-0.5, 0.5], [15, -15]), springConfig);
+  const tiltY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-15, 15]), springConfig);
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,8 +83,6 @@ const LogoFlipSection = () => {
   }, []);
 
   const current = logos[activeIndex];
-
-  // safer split
   const words = current.title.split(" ");
   const firstWord = words[0] || "";
   const secondWord = words.slice(1).join(" ") || "";
@@ -69,13 +92,7 @@ const LogoFlipSection = () => {
       ref={containerRef}
       style={{
         height: `${logos.length * 100}vh`,
-        background: `
-          radial-gradient(circle at top left, rgba(247, 244, 244, 0.25), transparent 40%),
-          radial-gradient(circle at top right, rgba(250, 163, 163, 0.25), transparent 40%),
-          radial-gradient(circle at bottom left, rgba(252, 185, 185, 0.25), transparent 40%),
-          radial-gradient(circle at bottom right, rgba(242, 186, 186, 0.25), transparent 40%),
-          white
-        `,
+        background: `radial-gradient(circle at center, #ffffff 0%, #fef2f2 100%)`,
       }}
       className="relative text-black"
     >
@@ -83,28 +100,68 @@ const LogoFlipSection = () => {
         <div className="container mx-auto px-6 lg:px-16 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             
-            {/* LEFT → 3D LOGO */}
-            <div className="w-full lg:w-1/2 flex justify-center">
+            {/* LEFT → ATTRACTIVE & INTERACTIVE 3D LOGO AREA */}
+            <div className="w-full lg:w-1/2 flex justify-center perspective-[1200px]">
               <motion.div
-                className="w-64 h-64 lg:w-96 lg:h-96 flex items-center justify-center"
-                animate={{ rotateY }}
-                transition={{ type: "spring", damping: 20 }}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                style={{ 
+                    rotateX: tiltX, 
+                    rotateY: tiltY,
+                    transformStyle: "preserve-3d" 
+                }}
+                className="relative w-72 h-72 lg:w-[500px] lg:h-[500px] flex items-center justify-center cursor-crosshair"
               >
-                <img
-                  src={current.src}
-                  alt={current.title}
-                  className="max-w-[70%] object-contain"
-                  style={{
-                    transform:
-                      Math.floor(rotateY / 180) % 2 === 0
-                        ? ""
-                        : "scaleX(-1)",
+                {/* Visual Depth Elements */}
+                <div className="absolute inset-0 bg-red-500/5 rounded-full blur-3xl scale-75 animate-pulse" />
+                
+                {/* 3D Glass Orbit Rings */}
+                <motion.div 
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-4 border-[1px] border-dashed border-red-200 rounded-full opacity-40" 
+                />
+                <motion.div 
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-10 border-[1.5px] border-red-100 rounded-full opacity-60" 
+                />
+
+                {/* Main Logo with Scroll Flip */}
+                <motion.div
+                  className="relative z-10 w-full h-full flex items-center justify-center"
+                  animate={{ 
+                    rotateY,
+                    y: [0, -20, 0] // Continuous floating motion
                   }}
+                  transition={{ 
+                    rotateY: { type: "spring", damping: 25, stiffness: 100 },
+                    y: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+                  }}
+                  style={{ transformStyle: "preserve-3d" }}
+                >
+                  <img
+                    src={current.src}
+                    alt={current.title}
+                    className="max-w-[75%] max-h-[75%] object-contain drop-shadow-[0_30px_60px_rgba(220,38,38,0.15)]"
+                    style={{
+                      transform: Math.floor(rotateY / 180) % 2 === 0 ? "translateZ(50px)" : "scaleX(-1) translateZ(50px)",
+                    }}
+                  />
+                  
+                  {/* Under-glow that moves with the logo */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-red-600/10 blur-[80px] rounded-full" />
+                </motion.div>
+
+                {/* Dynamic Shadow on the floor */}
+                <motion.div 
+                  className="absolute bottom-4 w-1/2 h-6 bg-black/5 blur-xl rounded-[100%]"
+                  style={{ scale: useTransform(tiltX, [-15, 15], [0.8, 1.2]) }}
                 />
               </motion.div>
             </div>
 
-            {/* RIGHT → CONTENT */}
+            {/* RIGHT → CONTENT (KEPT EXACTLY PER YOUR CODE) */}
             <div className="w-full lg:w-1/2">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -169,7 +226,6 @@ const LogoFlipSection = () => {
                 </a>
               </div>
             </div>
-
           </div>
         </div>
       </div>

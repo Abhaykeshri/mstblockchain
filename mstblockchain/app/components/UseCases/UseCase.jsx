@@ -5,26 +5,25 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const useCases = [
-  { id: "01", title: "Supply Chain", desc: "Track goods across global networks with immutable records.", size: "tall", icon: "chain" },
-  { id: "02", title: "Real Estate", desc: "Fractional ownership of property assets via tokens.", size: "medium", icon: "building" },
-  { id: "03", title: "DeFi Liquidity", desc: "Automated market-making and decentralized pools.", size: "small", icon: "droplet" },
-  { id: "04", title: "Healthcare", desc: "Patient data privacy with encrypted access.", size: "medium", icon: "shield" },
-  { id: "05", title: "Metaverse", desc: "True digital ownership of in-game assets.", size: "tall", icon: "gamepad" },
-  { id: "06", title: "Identity", desc: "Self-sovereign verification without intermediaries.", size: "small", icon: "fingerprint" },
-  { id: "07", title: "Yield Aggr.", desc: "Optimize returns across protocols automatically.", size: "medium", icon: "layers" },
-  { id: "08", title: "Carbon", desc: "Transparent carbon offset trading and verification.", size: "tall", icon: "leaf" },
-  { id: "09", title: "Payments", desc: "Instant, low-cost international settlements.", size: "small", icon: "globe" },
-  { id: "10", title: "Asset Mgmt", desc: "On-chain portfolio tracking and rebalancing.", size: "medium", icon: "briefcase" },
-  { id: "11", title: "Oracles", desc: "Reliable off-chain data feeds for contracts.", size: "small", icon: "signal" },
-  { id: "12", title: "Governance", desc: "Decentralized voting and treasury management.", size: "tall", icon: "vote" },
-  { id: "13", title: "Privacy", desc: "Zero-knowledge solutions for transactions.", size: "medium", icon: "lock" },
-  { id: "14", title: "Escrow", desc: "Trustless, automated escrow via code.", size: "small", icon: "handshake" },
-  { id: "15", title: "Insurance", desc: "Parametric insurance with automatic payouts.", size: "medium", icon: "umbrella" },
-  { id: "16", title: "NFTs", desc: "Create, trade, and curate digital collectibles.", size: "tall", icon: "diamond" },
-  { id: "17", title: "Staking", desc: "Earn rewards by securing PoS networks.", size: "small", icon: "coins" },
-  { id: "18", title: "Vesting", desc: "Programmable unlock schedules for investors.", size: "medium", icon: "clock" },
-  { id: "19", title: "ZK Proofs", desc: "Scalable, private computation verification.", size: "tall", icon: "eye" },
-  { id: "20", title: "Lending", desc: "P2P lending with algorithmic rates.", size: "medium", icon: "percent" },
+  { id: "01", title: "On-Chain Certificate", desc: "Every certificate gets a unique fingerprint locked on the blockchain. Fraud becomes structurally impossible.", size: "tall", icon: "chain" },
+  { id: "02", title: "NFT Ticketing", desc:"Every ticket is a unique on-chain asset. No fakes. No scalping. No lost entry. Real ownership for every fan.", size: "medium", icon: "building" },
+  { id: "03", title: "Tokenized Real Estate", desc: "Real estate on MST blockchain — fractional, transparent, and permanently verifiable.", size: "small", icon: "droplet" },
+  { id: "04", title: "Decentralized Voting", desc: "When votes live on the blockchain, results cannot be disputed, altered, or hidden.", size: "medium", icon: "shield" },
+  { id: "05", title: "Healthcare Records", desc: "You control your medical records. Doctors get what they need instantly. MST is the secure bridge.", size: "tall", icon: "gamepad" },
+  { id: "06", title: "Loyalty & Rewards", desc: "Loyalty tokens with real value. Transparent rules. No expiry surprises. Spend across any partner brand.", size: "small", icon: "fingerprint" },
+  { id: "07", title: "Gaming Asset Ownership", desc: "Your sword. Your skin. Your character. Actually yours — on MST blockchain. Forever.", size: "medium", icon: "layers" },
+  { id: "08", title: "Charity & Donations", desc: "Complete transparency in charitable giving. Donors watch their money reach its destination in real time.", size: "tall", icon: "leaf" },
+  { id: "09", title: "Digital Identity & KYC", desc: "One MST verification. Trusted on every platform. Your data stays in your wallet.", size: "small", icon: "globe" },
+  { id: "10", title: "Supply Chain Transparency", desc: "Complete supply chain visibility on MST. Every movement verified. Every record permanent.", size: "medium", icon: "briefcase" },
+  { id: "11", title: "Education Credentials", desc: "Degrees that cannot be faked. Verified globally in seconds. Trusted forever.", size: "small", icon: "signal" },
+  { id: "12", title: "Land Records", desc: "If it is on MST blockchain, it cannot be forged, duplicated, or disputed. Ever.", size: "tall", icon: "vote" },
+  { id: "13", title: "Gold & Commodity Tokenization", desc: "The trust of gold. The accessibility of a wallet. The transparency of MST blockchain.", size: "medium", icon: "lock" },
+  { id: "14", title: "Insurance Automation", desc: "MST smart contracts replace manual claims. When conditions are met, payment happens automatically.", size: "small", icon: "handshake" },
+  { id: "15", title: "Freelance Marketplace", desc: "Work. Deliver. Get paid automatically. MST smart contracts replace informal trust in global freelancing.", size: "medium", icon: "umbrella" },
+  { id: "16", title: "Carbon Credit Tracking", desc: "No double-counting. No greenwashing. Carbon offset claims that are actually mathematically provable.", size: "tall", icon: "diamond" },
+  { id: "17", title: "Enterprise Workflow Automation", desc: "MST smart contracts replace slow manual approvals with automated workflows and instant audit trails.", size: "small", icon: "coins" },
+  { id: "18", title: "Digital Asset Exchange", desc: "Trade on MST with confidence — non-custodial, instant settlement, and every transaction permanently verifiable.", size: "medium", icon: "clock" },
+  { id: "19", title: "Decentralized Social Platforms", desc: "Your identity. Your content. Your community. All on MST blockchain. All permanently yours.", size: "tall", icon: "eye" },
 ];
 
 const icons = {
@@ -50,10 +49,12 @@ const icons = {
   percent: <><line x1="19" y1="5" x2="5" y2="19" /><circle cx="6.5" cy="6.5" r="2.5" /><circle cx="17.5" cy="17.5" r="2.5" /></>,
 };
 
+// ... (keep the useCases and icons objects exactly as they are)
+
 const sizeMap = {
-  small: "h-[120px]",
-  medium: "h-[180px]",
-  tall: "h-[240px]",
+  small: "min-h-[140px]",
+  medium: "min-h-[190px]",
+  tall: "min-h-[250px]",
 };
 
 const Card = ({ item, index }) => {
@@ -61,6 +62,33 @@ const Card = ({ item, index }) => {
   const router = useRouter();
 
   const handleClick = () => {
+    // Map titles to their exact folder names for routing
+    const titleToFolder = {
+      "On-Chain Certificate": "On-Chain-Certificate",
+      "NFT Ticketing": "NFT-Ticketing",
+      "Tokenized Real Estate": "Tokenized-Real-Estate",
+      "Decentralized Voting": "Decentralized-Voting",
+      "Healthcare Records": "Healthcare-Records",
+      "Loyalty & Rewards": "Loyalty-Rewards",
+      "Gaming Asset Ownership": "Gaming-Asset-Ownership",
+      "Charity & Donations": "Charity-Donations",
+      "Digital Identity & KYC": "Digital-Identity-KYC",
+      "Supply Chain Transparency": "Supply-Chain-Transparency",
+      "Education Credentials": "Education-Credentials",
+      "Land Records": "Land-Records",
+      "Gold & Commodity Tokenization": "Gold-Commodity-Tokenization",
+      "Insurance Automation": "Insurance-Automation",
+      "Freelance Marketplace": "Freelance-Marketplace",
+      "Carbon Credit Tracking": "Carbon-Credit-Tracking",
+      "Enterprise Workflow Automation": "Enterprise-Workflow-Automation",
+      "Digital Asset Exchange": "Digital-Asset-Exchange",
+      "Decentralized Social Platforms": "Decentralized-Social-Platforms"
+    };
+    if (titleToFolder[item.title]) {
+      router.push(`/usecase-pages/${encodeURIComponent(titleToFolder[item.title])}`);
+      return;
+    }
+    // fallback to slug logic
     const slug = item.title.toLowerCase().replace(/\s+/g, "-").replace(/\./g, "");
     router.push(`/usecase-pages/${slug}`);
   };
@@ -68,73 +96,90 @@ const Card = ({ item, index }) => {
   return (
     <motion.div
       onClick={handleClick}
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.02, type: "spring", stiffness: 100 }}
+      transition={{ delay: index * 0.05, duration: 0.5 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={`
-        relative group cursor-pointer overflow-hidden rounded-[2rem] border border-black
-        p-7 flex flex-col justify-end transition-all duration-500
+        relative group cursor-pointer overflow-hidden rounded-3xl border 
+        p-6 flex flex-col justify-end transition-all duration-500 ease-out
         ${sizeMap[item.size]}
-        hover:bg-red-600 hover:border-red-600 hover:shadow-2xl hover:shadow-red-500/30
-        ${isHovered ? "bg-red-600" : "bg-white/60 backdrop-blur-xl"}
+        ${isHovered 
+          ? "bg-red-600 border-red-600 shadow-xl shadow-red-500/20 translate-y-[-4px]" 
+          : "bg-white border-zinc-200 shadow-sm"}
       `}
-      style={{
-        breakInside: "avoid",
-        ...(Number(item.id) >= 1 && Number(item.id) <= 19 && {
-                    backgroundImage: isHovered ? 'none' : `url('/usecaselogos/${Number(item.id)}.png')`,
-                    backgroundSize: "70px",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                      opacity: 0.5,
-                    
-        })
+      style={{ 
+        breakInside: "avoid", 
+        backgroundImage: !isHovered ? `url('/usecaselogos/${Number(item.id)}.png')` : 'none',
+        backgroundSize: "60px",
+        backgroundPosition: "center 30%",
+        backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Glow */}
-      <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/0 group-hover:bg-white/10 blur-3xl transition-all duration-700" />
+      {/* Subtle Gradient Overlay for non-hover state to keep text readable */}
+      {!isHovered && <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent opacity-80" />}
 
-      {/* Small icon */}
-      <div className={`absolute top-7 right-7 transition-all duration-500 ${isHovered ? "text-white scale-110 -rotate-12" : "text-zinc-300"}`}>
+      {/* Small Icon - Top Right */}
+      <div className={`absolute top-7 right-7 transition-all duration-500 ${isHovered ? "text-black scale-110 -rotate-12" : "text-zinc-300"}`}>
         <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
           {icons[item.icon]}
         </svg>
       </div>
 
-      <div className="relative z-10">
-        <div className="relative z-10 flex flex-col h-full justify-end">
+      <div className="relative z-10 w-full">
+        <div className="flex flex-col">
+          <h3 className={`
+            font-bold leading-tight transition-colors duration-300
+            ${isHovered ? "text-white text-sm" : "text-zinc-900 text-[13px]"}
+            uppercase tracking-wider
+          `}>
+            {item.title}
+          </h3>
+          
           <AnimatePresence>
             {isHovered && (
               <motion.p
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="text-[12px] pt-3 text-red-50"
+                className="text-[11px] leading-relaxed mt-2 text-red-50 font-medium"
               >
                 {item.desc}
               </motion.p>
             )}
           </AnimatePresence>
-          <h3 className={`font-black text-base lg:text-lg uppercase transition-colors mt-2 ${isHovered ? "text-white" : "text-zinc-800"}`}>
-            {item.title}
-          </h3>
         </div>
-      </div>  
+      </div>
     </motion.div>
   );
 };
 
 const UseCases = () => {
   return (
-    <section className="w-full bg-[#fcfcfc] py-24 min-h-screen">
-      <div className="max-w-[1400px] mx-auto px-6">
-        <h2 className="text-6xl font-black mb-20">
-          Use <span className="text-red-600">case</span>
-        </h2>
+    <section className="w-full bg-[#f8f9fa] py-24 min-h-screen relative overflow-hidden font-poppins">
+      {/* Background Orbits (Keeping your existing orbit code but lowering opacity for professionalism) */}
+      <div className="absolute inset-0 opacity-40 pointer-events-none">
+          {/* ... (Insert your existing Orbit motion.divs here) ... */}
+      </div>
 
-        <div className="columns-1 sm:columns-2 lg:columns-4 xl:columns-5 gap-6 space-y-6">
+      <div className="max-w-[1600px] mx-auto px-8 relative z-10">
+        <header className="mb-20 text-center">
+          <motion.span 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-red-600 font-bold tracking-[0.3em] text-xs uppercase mb-3 block"
+          >
+            Capabilities
+          </motion.span>
+          <h2 className="text-6xl uppercase font-black mb-20 text-center font-montserrat" style={{ fontFamily: 'Montserrat, Arial, Helvetica, sans-serif', fontWeight: 800 }}>
+            Use <span className="text-red-600">case</span>
+          </h2>
+        </header>
+
+        {/* Masonry Layout with improved spacing */}
+        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-5 space-y-5">
           {useCases.map((item, i) => (
             <Card key={item.id} item={item} index={i} />
           ))}

@@ -114,7 +114,7 @@ export default function MSTInstitutional() {
             className="w-[140px] md:w-[300px] h-[140px] md:h-[300px] flex items-center justify-center rounded-2xl"
           >
             <img
-              src="/1.png"
+              src="/placeholder.png"
               alt="MST Logo"
               className="w-full h-full object-contain opacity-90 drop-shadow-[0_0_30px_rgba(255,45,45,0.3)]"
             />

@@ -15,7 +15,7 @@ const slides = [
 
 const headings = [
   "An Ecosystem Where *Innovation* Takes Shape",
-  "Designed for *Scale*. Built for the *Future*.",
+  "Designed for *Scale* Built for the *Future*",
   "Turning Blockchain *Potential* into Real *Utility*"
 ];
 
@@ -27,7 +27,7 @@ const stats = [
 
 // 🔥 LOGOS
 const partnerImages = [
-  '/logos/1.png',
+  '/placeholder.png',
   '/logos/2.png',
   '/logos/3.png',
   '/logos/4.png',
