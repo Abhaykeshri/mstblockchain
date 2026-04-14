@@ -42,7 +42,7 @@ export default function HeroImage() {
   }, []);
 
   return (
-    <div className="mx-auto w-[400px] mb-5 max-w-2xl lg:mx-0 relative">
+    <div className="w-55 h-105 sm:w-65 sm:h-125 lg:mx-0 relative flex items-center justify-center lg:items-center lg:justify-end self-center">
       {/* Orbit 1: Inner Solid Ring */}
       <motion.div
         animate={{ rotate: [360, 0] }}
@@ -129,7 +129,7 @@ export default function HeroImage() {
           className="w-full h-full origin-center"
         >
           <div className="relative overflow-hidden rounded-[2rem] border border-accent/10 bg-gradient-to-br from-white/90 via-white to-zinc-100/90 p-3 shadow-glow [transform:rotateX(13deg)_rotateY(-16deg)] transition-transform duration-700 ease-in-out hover:[transform:rotateX(0deg)_rotateY(0deg)] hover:shadow-[0_0_120px_rgba(255,45,45,0.25)]" style={{ boxShadow: '0 0 90px rgba(255, 45, 45, 0.15), 0 34px 76px rgba(0, 0, 0, 0.25)' }}>
-            <div className="relative  h-[420px] overflow-hidden rounded-[1.5rem] border border-black/10 bg-black/5">
+            <div className="relative w-[180px] h-[360px] sm:w-[220px] sm:h-[440px] overflow-hidden rounded-[1.5rem] border border-black/10 bg-black/5 mx-auto flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={slides[activeIndex].src}
@@ -144,6 +144,7 @@ export default function HeroImage() {
                   alt={slides[activeIndex].alt}
                   fill
                   className="object-cover"
+                  style={{objectFit:'cover', width:'100%', height:'100%'}}
                   priority={activeIndex === 0}
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
